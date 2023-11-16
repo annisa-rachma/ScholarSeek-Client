@@ -21,7 +21,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="relative z-[50] h-[75px] flex flex-col">
+            <nav className="fixed bg-white w-full z-[50] h-[75px] flex flex-col shadow-sm">
                 <div className="p-4 flex-[1] max-w-[1300px] w-full mx-auto flex justify-between text-2xl items-center">
                     <NavLink to="/" className="logo-font">
                         ScholarSeek

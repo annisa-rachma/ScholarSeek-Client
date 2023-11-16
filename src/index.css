@@ -6,6 +6,10 @@
     font-family: 'Nunito', sans-serif;
 }
 
+.logo-font {
+    font-family: 'Palanquin Dark', sans-serif;
+}
+
 .navbar.active {
     position: relative;
 }
@@ -16,6 +20,6 @@
     transform: translateX(-50%) translateY(2px);
     bottom  : 0;
     height  : 1px;
-    width   : 85%;  /* or 100px */
+    width   : 90%;  /* or 100px */
     border-bottom:2px solid #3056e3;
 }

@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom"
 import { HiOutlineMenuAlt3 } from "react-icons/hi"
 import { CgClose } from "react-icons/cg"
-import Button from "./Button"
 import { useState } from "react"
 import NavbarMobileMenu from "./NavbarMobileMenu"
 
@@ -22,15 +21,19 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="relative z-[50] shadow-md h-[75px] flex flex-col">
-                <div className="p-4 flex-[1] flex justify-between text-2xl items-center">
-                    <NavLink to="/" className="font-bold">
+            <nav className="relative z-[50] h-[75px] flex flex-col">
+                <div className="p-4 flex-[1] max-w-[1300px] w-full mx-auto flex justify-between text-2xl items-center">
+                    <NavLink to="/" className="logo-font">
                         ScholarSeek
                     </NavLink>
 
-                    <Button onClick={toggleNav} className="p-2 md:hidden">
+                    <button
+                        type="button"
+                        onClick={toggleNav}
+                        className="p-2 md:hidden"
+                    >
                         {isOpen ? <CgClose /> : <HiOutlineMenuAlt3 />}
-                    </Button>
+                    </button>
 
                     <div className="hidden md:flex gap-[40px] text-base font-semibold">
                         {links.map((link) => (

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 export default function NavbarMobileMenu({ isOpen, handleClose, className, links }) {
     return (
         <div
-            className={`${className} w-full flex absolute min-h-screen overflow-hidden md:hidden`}
+            className={`${className} w-full flex fixed h-screen overflow-hidden md:hidden`}
         >
             <div
                 onClick={handleClose}

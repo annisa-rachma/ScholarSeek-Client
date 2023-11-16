@@ -4,11 +4,11 @@ import heroImg from "../../assets/hero-image.png"
 
 export default function Hero() {
     return (
-        <div className="md:px-6">
-            <Container className="bg-primary relative md:w-[60%] md:h-[450px] md:p-16 flex md:items-center">
-                <div className="flex-[1] flex flex-col text-white max-md:text-center max-sm:mb-[18vw] sm:max-md:mb-[124px] items-center md:items-start gap-3 md:gap-5 md:max-w-[85%]">
+        <div className="md:px-6 max-md:mb-[20vw]">
+            <Container className="bg-primary relative md:w-[60%] md:h-[400px] md:p-14 flex md:items-center">
+                <div className="flex-[1] flex flex-col text-white max-md:text-center max-sm:mb-[20vw] sm:max-md:mb-[124px] items-center md:items-start gap-4 md:gap-5 md:max-w-[85%]">
                     <h1
-                        className="text-2xl md:text-4xl lg:text-5xl text-accent_text font-bold md:flex flex-col"
+                        className="text-2xl md:text-3xl lg:text-4xl text-accent_text font-bold md:flex flex-col"
                         style={{ textWrap: "balance" }}
                     >
                         Raih impianmu, <span>Temukan beasiswa di sini</span>

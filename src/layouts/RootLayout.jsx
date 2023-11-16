@@ -3,10 +3,11 @@ import Navbar from "../components/Navbar"
 
 export default function RootLayout() {
     return (
-        <div>
-            <h1>INI ROOT LAYOUTT</h1>
+        <div className="flex flex-col min-h-screen relative">
             <Navbar/>
-            <Outlet />
+            <main className="flex-[1] z-[9]">
+                <Outlet />
+            </main>
         </div>
     )
 }

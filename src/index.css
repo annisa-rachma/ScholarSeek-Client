@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+.navbar.active {
+    position: relative;
+}
+.navbar.active:before {
+    content : "";
+    position: absolute;
+    left    : 50%;
+    transform: translateX(-50%) translateY(2px);
+    bottom  : 0;
+    height  : 1px;
+    width   : 85%;  /* or 100px */
+    border-bottom:2px solid #3056e3;
+}

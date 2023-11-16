@@ -1,0 +1,32 @@
+import Container from "../../components/Container"
+import Button from "../../components/Button"
+import heroImg from "../../assets/hero-image.png"
+
+export default function Hero() {
+    return (
+        <div className="md:px-6">
+            <Container className="bg-primary relative md:w-[60%] md:h-[450px] md:p-16 flex md:items-center">
+                <div className="flex-[1] flex flex-col text-white max-md:text-center max-sm:mb-[18vw] sm:max-md:mb-[124px] items-center md:items-start gap-3 md:gap-5 md:max-w-[85%]">
+                    <h1
+                        className="text-2xl md:text-4xl lg:text-5xl text-accent_text font-bold md:flex flex-col"
+                        style={{ textWrap: "balance" }}
+                    >
+                        Raih impianmu, <span>Temukan beasiswa di sini</span>
+                    </h1>
+                    <p className="text-sm w-[85%] md:text-lg">
+                        Temukan beasiswa, terhubung dengan mentor, dan ikut
+                        serta dalam forum dinamis kami.
+                    </p>
+                    <Button className="text-primary bg-white ">
+                        Cari tau lebih lanjut
+                    </Button>
+                </div>
+                <img
+                    className="absolute max-md:bottom-0 md:bottom-[50%] translate-y-[50%] max-md:left-[50%] translate-x-[-50%] w-[76vw] max-w-[460px] md:w-[50vw] md:max-w-[550px] md:right-0 md:translate-x-[70%] "
+                    src={heroImg}
+                    alt=""
+                />
+            </Container>
+        </div>
+    )
+}

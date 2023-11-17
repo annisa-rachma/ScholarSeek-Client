@@ -21,11 +21,21 @@ export default function Home() {
                 title="Jelajahi dan temukan bermacam beasiswa"
                 desc="Telusuri informasi beasiswa terbaru dari seluruh dunia. Dapatkan berbagai jenis beasiswa, baik sebagian maupun sepenuhnya, di dalam maupun di luar negeri!"
             />
-            <Carousel>
-                {scholarships.map((data, i) => (
-                        <ScholarshipCard key={i} {...data} className="mx-2" />
-                    ))}
-            </Carousel>
+            <div className="flex flex-col">
+                <Carousel>
+                    {scholarships.map((data, i) => (
+                            <ScholarshipCard key={i} {...data} className="mx-2" />
+                        ))}
+                </Carousel>
+                <Button
+                        type="link"
+                        to="scholarships"
+                        className="bg-primary text-white max-w-max m-auto"
+                    >
+                        Temukan beasiswa lainnya
+                    </Button>
+            </div>
+
             <InfoSection
                 reverse
                 image={mentoringImg}

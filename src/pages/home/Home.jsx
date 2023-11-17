@@ -3,10 +3,13 @@ import Hero from "./Hero"
 import scholarshipImg from "../../assets/scholarship-image.png"
 import mentoringImg from "../../assets/mentoring-image.png"
 import forumImg from "../../assets/forum-image.png"
+import bannerImg from "../../assets/banner-bawah.png"
 import Button from "../../components/Button"
 import Carousel from "../../components/Carousel"
 import scholarships from '../../data/scholarships.json'
 import ScholarshipCard from "../../components/ScholarshipCard"
+import Banner from "../../components/Banner"
+
 
 export default function Home() {
     return (
@@ -54,6 +57,20 @@ export default function Home() {
                     </Button>
                 }
             />
+            <Banner color='bg-primary' className='overflow-hidden'>
+                <div className="grid grid-cols-1 md:grid-cols-3 md:max-w-[80%] mx-auto font-extrabold text-xl items-center">
+                    <div className="flex flex-col md:col-span-2 items-center md:items-start gap-4">
+                        <h1 className="text-accent_text sm:text-2xl md:text-4xl">Siap untuk blablablabla?</h1>
+                        <h1 className="text-white md:text-2xl">lorem ipsum dor sel</h1>
+                        <Button type='link' to='login' className='bg-white text-primary'>
+                            Gabung di sini
+                        </Button>
+                    </div>
+                    <div className="hidden md:grid w-full h-full max-h-[200px] place-content-center">
+                        <img src={bannerImg} className="max-w-[400px] lg:max-w-[450px]" alt="" />
+                    </div>
+                </div>
+            </Banner>
         </>
     )
 }

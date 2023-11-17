@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom"
 import { HiOutlineMenuAlt3 } from "react-icons/hi"
 import { CgClose } from "react-icons/cg"
 import NavbarMobileMenu from "./NavbarMobileMenu"
+import NavbarProfile from "./NavbarProfile"
 
 export default function Navbar({ toggleNav, closeNav, isOpen }) {
     const links = [
@@ -26,7 +27,7 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
                         {isOpen ? <CgClose /> : <HiOutlineMenuAlt3 />}
                     </button>
 
-                    <div className="hidden md:flex gap-[40px] text-base font-semibold">
+                    <div className="hidden md:flex items-center gap-[40px] text-base font-semibold">
                         {links.map((link) => (
                             <NavLink
                                 className="navbar"
@@ -36,6 +37,7 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
                                 {link.name}
                             </NavLink>
                         ))}
+                        <NavbarProfile isLoggedIn />
                     </div>
                 </div>
             </nav>

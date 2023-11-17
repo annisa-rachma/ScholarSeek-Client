@@ -52,3 +52,35 @@
 .slick-next::before {
     color: rgb(177, 177, 177);
 }
+
+input:focus {
+    outline: none;
+}
+
+input {
+    color: rgb(141, 141, 141);
+    font-weight: 300;
+}
+
+.loading-dots {
+    width: 60px;
+    aspect-ratio: 4;
+    --_g: no-repeat radial-gradient(circle closest-side, #c1c1c1 90%, #afafaf00);
+    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background-size: calc(100% / 3) 100%;
+    animation: d7 1s infinite linear;
+}
+@keyframes d7 {
+    33% {
+        background-size: calc(100% / 3) 0%, calc(100% / 3) 100%,
+            calc(100% / 3) 100%;
+    }
+    50% {
+        background-size: calc(100% / 3) 100%, calc(100% / 3) 0%,
+            calc(100% / 3) 100%;
+    }
+    66% {
+        background-size: calc(100% / 3) 100%, calc(100% / 3) 100%,
+            calc(100% / 3) 0%;
+    }
+}

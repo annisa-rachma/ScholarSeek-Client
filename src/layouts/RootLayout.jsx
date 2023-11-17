@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import Navbar from "../components/Navbar"
+import Navbar from "../components/navbar/Navbar"
 import { useState } from "react"
 import Footer from "../components/Footer"
 
@@ -14,14 +14,14 @@ export default function RootLayout() {
     }
     return (
         <div className="flex flex-col min-h-screen relative overflow-hidden">
-            <Navbar isOpen={isOpen} toggleNav={toggleNav} closeNav={closeNav}/>
+            <Navbar isOpen={isOpen} toggleNav={toggleNav} closeNav={closeNav} />
             <main
                 onClick={closeNav}
-                className={`pt-[75px] flex-[1] w-full max-w-[1300px] mx-auto flex flex-col gap-16 md:gap-24 overflow-hidden`}
+                className={`pt-[75px] flex-[1] w-full  max-w-[1300px] mx-auto flex flex-col gap-16 md:gap-24 overflow-hidden`}
             >
                 <Outlet />
             </main>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

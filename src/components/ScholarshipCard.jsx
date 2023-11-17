@@ -18,7 +18,7 @@ export default function ScholarshipCard({
         >
             <div className="flex flex-col gap-3 group-hover:translate-y-[-3px] duration-200">
                 <p className="text-sm md:text-base font-light">{fundingType}</p>
-                <h2 className="font-extrabold text-base md:text-lg">{title}</h2>
+                <h2 className="font-extrabold text-base md:text-lg ellipsis-3">{title}</h2>
                 <section className="flex gap-4 items-center">
                     <div className="bg-accent_yellow py-2 px-4 rounded-full flex gap-2">
                         <img
@@ -32,7 +32,7 @@ export default function ScholarshipCard({
                         {degree}
                     </p>
                 </section>
-                <section className="p-3 rounded-xl bg-secondary grid grid-cols-2 text-[12px] sm:text-base">
+                <section className="p-3 rounded-xl bg-white grid grid-cols-2 text-[12px] sm:text-base">
                     <p className="font-bold">Open</p>
                     <p className="font-light text-end">{open}</p>
                     <p className="font-bold">Deadline</p>

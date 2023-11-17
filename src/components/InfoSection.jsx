@@ -33,8 +33,14 @@ export default function InfoSection({
                 </div>
             </div>
             {/* info */}
-            <div className={`flex flex-col gap-2 sm:gap-4 md:max-w-[60%] ${reverse ? 'pl-3': 'pr-3'}`}>
-                <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-primary">{title}</h1>
+            <div
+                className={`flex flex-col gap-2 sm:gap-4 md:max-w-[60%] ${
+                    reverse ? "pl-3" : "pr-3"
+                }`}
+            >
+                <h1 className="text-xl sm:text-2xl md:text-4xl font-bold text-primary">
+                    {title}
+                </h1>
                 <p className="text-[12px] sm:text-sm text-slate-400">{desc}</p>
                 {button}
             </div>

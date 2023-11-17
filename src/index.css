@@ -3,23 +3,52 @@
 @tailwind utilities;
 
 * {
-    font-family: 'Nunito', sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 .logo-font {
-    font-family: 'Palanquin Dark', sans-serif;
+    font-family: "Palanquin Dark", sans-serif;
 }
 
 .navbar.active {
     position: relative;
 }
 .navbar.active:before {
-    content : "";
+    content: "";
     position: absolute;
-    left    : 50%;
+    left: 50%;
     transform: translateX(-50%) translateY(2px);
-    bottom  : 0;
-    height  : 1px;
-    width   : 90%;  /* or 100px */
-    border-bottom:2px solid #3056e3;
+    bottom: 0;
+    height: 1px;
+    width: 90%; /* or 100px */
+    border-bottom: 2px solid #3056e3;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-12px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+.float-animation {
+    animation: float 5s ease-in-out infinite;
+}
+
+.ellipsis-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.slick-prev::before,
+.slick-next::before {
+    color: rgb(177, 177, 177);
 }

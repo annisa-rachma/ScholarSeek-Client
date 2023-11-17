@@ -4,6 +4,7 @@ import scholarshipImg from "../../assets/scholarship-image.png"
 import mentoringImg from "../../assets/mentoring-image.png"
 import forumImg from "../../assets/forum-image.png"
 import Button from "../../components/Button"
+import Carousel from "../../components/Carousel"
 
 export default function Home() {
     return (
@@ -31,6 +32,7 @@ export default function Home() {
                     </Button>
                 }
             />
+            <Carousel/>
             <InfoSection
                 image={forumImg}
                 blockColor="bg-secondary"

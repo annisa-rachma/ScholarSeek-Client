@@ -1,18 +1,9 @@
 import { NavLink } from "react-router-dom"
 import { HiOutlineMenuAlt3 } from "react-icons/hi"
 import { CgClose } from "react-icons/cg"
-import { useState } from "react"
 import NavbarMobileMenu from "./NavbarMobileMenu"
 
-export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false)
-    function toggleNav() {
-        setIsOpen((prev) => !prev)
-    }
-    function closeNav() {
-        if (!isOpen) return
-        setIsOpen(false)
-    }
+export default function Navbar({ toggleNav, closeNav, isOpen }) {
     const links = [
         { to: "/", name: "Home" },
         { to: "scholarships", name: "Scholarships" },
@@ -50,7 +41,7 @@ export default function Navbar() {
             </nav>
             <NavbarMobileMenu
                 isOpen={isOpen}
-                className="z-[49]"
+                className="z-[48]"
                 handleClose={closeNav}
                 links={links}
             />

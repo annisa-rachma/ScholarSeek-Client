@@ -5,6 +5,8 @@ import mentoringImg from "../../assets/mentoring-image.png"
 import forumImg from "../../assets/forum-image.png"
 import Button from "../../components/Button"
 import Carousel from "../../components/Carousel"
+import scholarships from '../../data/scholarships.json'
+import ScholarshipCard from "../../components/ScholarshipCard"
 
 export default function Home() {
     return (
@@ -16,6 +18,11 @@ export default function Home() {
                 title="Jelajahi dan temukan bermacam beasiswa"
                 desc="Telusuri informasi beasiswa terbaru dari seluruh dunia. Dapatkan berbagai jenis beasiswa, baik sebagian maupun sepenuhnya, di dalam maupun di luar negeri!"
             />
+            <Carousel>
+                {scholarships.map((data, i) => (
+                        <ScholarshipCard key={i} {...data} className="mx-2" />
+                    ))}
+            </Carousel>
             <InfoSection
                 reverse
                 image={mentoringImg}
@@ -32,7 +39,6 @@ export default function Home() {
                     </Button>
                 }
             />
-            <Carousel/>
             <InfoSection
                 image={forumImg}
                 blockColor="bg-secondary"

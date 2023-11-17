@@ -21,11 +21,13 @@ export default function Hero() {
                         Cari tau lebih lanjut
                     </Button>
                 </div>
-                <img
-                    className="absolute max-md:bottom-0 md:bottom-[50%] translate-y-[50%] max-md:left-[50%] translate-x-[-50%] w-[76vw] max-w-[460px] md:w-[50vw] md:max-w-[550px] md:right-0 md:translate-x-[70%] "
-                    src={heroImg}
-                    alt=""
-                />
+                <div className="absolute max-md:bottom-0 md:bottom-[50%] translate-y-[50%] max-md:left-[50%] translate-x-[-50%] w-[76vw] max-w-[460px] md:w-[50vw] md:max-w-[550px] md:right-0 md:translate-x-[70%] ">
+                    <img
+                        className="float-animation"
+                        src={heroImg}
+                        alt=""
+                    />
+                </div>
             </Container>
         </div>
     )

@@ -33,7 +33,6 @@ export default function ScrollarShipInfiniteScroll({
 
     return (
         <div>
-            
             <InfiniteScroll
                 dataLength={articles ? articles.length : 0}
                 next={() => fetchNextPage()}

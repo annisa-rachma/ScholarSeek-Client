@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "../components/Navbar"
 import { useState } from "react"
+import Footer from "../components/Footer"
 
 export default function RootLayout() {
     const [isOpen, setIsOpen] = useState(false)
@@ -20,6 +21,7 @@ export default function RootLayout() {
             >
                 <Outlet />
             </main>
+            <Footer/>
         </div>
     )
 }

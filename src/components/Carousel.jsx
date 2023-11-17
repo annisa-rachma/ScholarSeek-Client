@@ -39,7 +39,7 @@ const settings = {
 
 export default function Carousel({ children }) {
     return (
-        <div className="px-20 mb-4">
+        <div className="px-20 mb-8">
             <Slider {...settings}>
                 {children}
             </Slider>

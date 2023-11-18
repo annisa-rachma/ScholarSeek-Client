@@ -5,8 +5,6 @@ import FilterMenu from "./FilterMenu"
 
 export default function FilterButton_Modal() {
     const [isOpen, setIsOpen] = useState(false)
-
-    console.log(isOpen)
     return (
         <>
             <button

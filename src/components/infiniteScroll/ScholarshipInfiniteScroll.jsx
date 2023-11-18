@@ -49,6 +49,7 @@ export default function ScrollarShipInfiniteScroll({
                         {articles &&
                             articles.map((article, i) => (
                                 <ScholarshipCard
+                                    slug={'ini-pura-puranya-slug-scholarship'}
                                     key={i}
                                     title={article.title}
                                     country="Indonesia"

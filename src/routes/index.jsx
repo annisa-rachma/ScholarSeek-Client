@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 import RootLayout from "../layouts/RootLayout"
 import Home from "../pages/home/Home"
 import About from "../pages/About"
-import Scholarships from "../pages/Scholarships"
+import Scholarships from "../pages/scholarship/Scholarships"
 
 export const router = createBrowserRouter([
     {

@@ -1,6 +1,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
 import InfiniteScroll from "react-infinite-scroll-component"
 import ScholarshipCard from "../ScholarshipCard"
+import ReachedTheEnd from "./ReachedTheEnd"
+import Loading from "../Loading"
 
 export default function ScrollarShipInfiniteScroll({
     url_with_limit_and_offset_query,
@@ -32,34 +34,34 @@ export default function ScrollarShipInfiniteScroll({
     }, [])
 
     return (
-        <div>
-            <InfiniteScroll
-                dataLength={articles ? articles.length : 0}
-                next={() => fetchNextPage()}
-                hasMore={hasNextPage}
-                loader={<div className="loading-dots mx-auto my-6"></div>}
-                endMessage={
-                    <p style={{ textAlign: "center" }}>
-                        <b>Udah abis brooooo</b>
-                    </p>
-                }
-            >
-                <div className="grid grid-cols-2 gap-4">
-                    {articles &&
-                        articles.map((article, i) => (
-                            <ScholarshipCard
-                                key={i}
-                                title={article.title}
-                                country="Indonesia"
-                                countryCode="ID"
-                                degree='S3'
-                                open='1 Nov 2023'
-                                fundingType='Fully Funded'
-                                deadline='24 Des 2023'
-                            />
-                        ))}
-                </div>
-            </InfiniteScroll>
-        </div>
+        <>
+            {!articles ? (
+                <Loading className="flex-[1]" />
+            ) : (
+                <InfiniteScroll
+                    dataLength={articles ? articles.length : 0}
+                    next={() => fetchNextPage()}
+                    hasMore={hasNextPage}
+                    loader={<div className="loading-dots mx-auto my-6"></div>}
+                    endMessage={<ReachedTheEnd />}
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {articles &&
+                            articles.map((article, i) => (
+                                <ScholarshipCard
+                                    key={i}
+                                    title={article.title}
+                                    country="Indonesia"
+                                    countryCode="ID"
+                                    degree="S3"
+                                    open="1 Nov 2023"
+                                    fundingType="Fully Funded"
+                                    deadline="24 Des 2023"
+                                />
+                            ))}
+                    </div>
+                </InfiniteScroll>
+            )}
+        </>
     )
 }

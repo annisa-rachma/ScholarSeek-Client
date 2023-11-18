@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import MiniProfile from "../MiniProfile"
 import NavbarProfileDropDown from "./NavbarProfileDropDown"
 
-export default function NavbarProfile({ isLoggedIn }) {
+export default function NavbarProfile({ isLoggedIn, forMobile }) {
     if (isLoggedIn)
         return (
             <div className="relative group ">
@@ -16,16 +16,16 @@ export default function NavbarProfile({ isLoggedIn }) {
         )
 
     return (
-        <div className="flex gap-[30px]">
+        <div className={`flex ${forMobile ? 'flex-col items-end': 'flex-row'} gap-[30px]`}>
             <Link
                 to="/log-in"
-                className="border border-primary text-primary px-6 py-2 rounded-md"
+                className={`border border-primary text-primary px-6 py-2 rounded-md ${forMobile ? 'text-end max-w-max': 'text-center'} `}
             >
                 Login
             </Link>
             <Link
                 to="/sign-up"
-                className="bg-primary text-white px-6 py-2 rounded-md"
+                className={`bg-primary text-white px-6 py-2 rounded-md ${forMobile ? 'text-end max-w-max': 'text-center'} `}
             >
                 Sign Up
             </Link>

@@ -1,7 +1,7 @@
 import { useState } from "react"
-import CheckBox from "../../components/form/checkBox"
-import SearchInput from "./SearchInput"
-import Button from "../../components/Button"
+import CheckBox from "../../../components/form/checkBox"
+import SearchInput from "../../../components/form/SearchInput"
+import Button from "../../../components/Button"
 
 export default function FilterMenu({ className }) {
     const [form, setForm] = useState({

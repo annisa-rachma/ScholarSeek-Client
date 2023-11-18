@@ -1,22 +1,21 @@
 import { IoSearchOutline } from "react-icons/io5"
 
-export default function SearchBar({
+export default function SearchInput({
     placeholder,
     includeButton,
     reverse,
     secondary,
-    onSubmit,
-    name,
+    id,
+    onChange,
 }) {
     return (
-        <form
-            onSubmit={(e) => onSubmit(e)}
+        <div
             className={`py-2 pl-4 pr-2 flex flex-[1]  ${
                 reverse ? "flex-row-reverse" : "flex-row"
             } items-center gap-4 border border-primary rounded-xl`}
         >
             <label
-                htmlFor="searchIcon"
+                htmlFor={id}
                 className={`text-3xl ${
                     secondary ? "text-slate-400" : "text-primary"
                 } `}
@@ -26,10 +25,11 @@ export default function SearchBar({
             <input
                 size={1}
                 type="text"
-                id="searchIcon"
-                name={name}
+                id={id}
+                name={id}
                 placeholder={placeholder}
                 className="flex-[1]"
+                onChange={(e) => onChange(e)}
             />
             {includeButton && (
                 <button
@@ -39,6 +39,6 @@ export default function SearchBar({
                     Search
                 </button>
             )}
-        </form>
+        </div>
     )
 }

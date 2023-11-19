@@ -46,7 +46,7 @@ export default function ParticipantsSideBar({
                </span>
             </header>
 
-            <div className="overflow-y-scroll h-full bg-gray-700 text-white">
+            <div className="overflow-y-scroll scrollbar h-full bg-gray-700 text-white">
                {participants.map((participant, i) => (
                   <div key={i} className="py-2 px-4 flex gap-2 items-center">
                      <div className="h-[8px] aspect-square rounded-full bg-green-500" />

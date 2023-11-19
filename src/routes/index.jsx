@@ -6,6 +6,7 @@ import ScholarshipsPage from "../pages/scholarship/main/ScholarshipsPage"
 import ScholarshipDetailPage from "../pages/scholarship/detail/ScholarshipDetailPage"
 import MentoringPage from "../pages/mentoring/main/MentoringPage"
 import MentoringDetaiLPage from "../pages/mentoring/detail/MentoringDetaiLPage"
+import ForumPage from "../pages/forum/main/ForumPage"
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
             {
                 path: '/mentoring/:slug',
                 element: <MentoringDetaiLPage/>
+            },
+            {
+                path: '/forum',
+                element: <ForumPage/>
             }
         ],
     },

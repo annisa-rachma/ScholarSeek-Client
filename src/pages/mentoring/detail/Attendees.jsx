@@ -5,9 +5,10 @@ export default function Attendees({ attendees, totalAttendees }) {
         <div className="flex flex-wrap gap-2 items-center">
             <div
                 style={{
+                    height: `${IMAGE_WIDTH}px`,
                     width: `${attendees.length * (IMAGE_WIDTH * 0.75)}px`,
                 }}
-                className={`relative h-[${IMAGE_WIDTH}px]`}
+                className={`relative`}
             >
                 {attendees.map((el, i) => (
                     <img
@@ -15,12 +16,13 @@ export default function Attendees({ attendees, totalAttendees }) {
                         src={el}
                         alt=""
                         style={{
+                            maxWidth: `${IMAGE_WIDTH}px`,
                             transform: `translateX(${
                                 i * (IMAGE_WIDTH * 0.65)
                             }px)`,
                             zIndex: i,
                         }}
-                        className={`absolute max-w-[${IMAGE_WIDTH}px] rounded-full border-2`}
+                        className={`absolute rounded-full border-2`}
                     />
                 ))}
             </div>

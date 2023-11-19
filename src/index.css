@@ -40,6 +40,13 @@
     animation: float 5s ease-in-out infinite;
 }
 
+.ellipsis-4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
 .ellipsis-3 {
     overflow: hidden;
     display: -webkit-box;

@@ -40,7 +40,7 @@ export default function ChatsSideBar({ chats, pageHeight }) {
                   />
                </header>
             )}
-            <div className="overflow-y-scroll p-4 flex flex-col gap-4 h-full bg-gray-700 text-white">
+            <div className="overflow-y-scroll scrollbar p-4 flex flex-col gap-4 h-full bg-gray-700 text-white">
                {chats.map((chat, i) => (
                   <div
                      key={i}

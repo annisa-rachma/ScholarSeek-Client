@@ -7,13 +7,14 @@ export default function SearchBar({
     secondary,
     onSubmit,
     name,
+    className
 }) {
     return (
         <form
             onSubmit={(e) => onSubmit(e)}
-            className={`py-2 pl-4 pr-2 flex flex-[1]  ${
+            className={`py-2 pl-4 pr-2 flex  ${
                 reverse ? "flex-row-reverse" : "flex-row"
-            } items-center gap-4 border border-primary rounded-xl`}
+            } ${className} items-center gap-4 border border-primary rounded-xl`}
         >
             <label
                 htmlFor="searchIcon"

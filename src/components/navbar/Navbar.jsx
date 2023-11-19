@@ -10,6 +10,7 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
         { to: "scholarships", name: "Scholarships" },
         { to: "about", name: "About" },
         { to: "mentoring", name: "Mentoring" },
+        { to: "mentoring/room/ceritanya-ini-room-id", name: "Mentor Room" },
         { to: "forum", name: "Forum" },
     ]
 

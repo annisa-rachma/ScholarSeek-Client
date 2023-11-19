@@ -7,7 +7,7 @@ export default function Footer() {
         { to: "about", name: "About" },
     ]
     return (
-        <footer className="mt-6 border-t border">
+        <footer className="border-t border">
             <div className="w-full max-w-[1300px] mx-auto flex justify-between p-8 text-slate-500">
                 <p>&copy; Copyright 2023 - HCK63</p>
                 <div className="flex gap-5">

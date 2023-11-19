@@ -8,6 +8,7 @@ import MentoringPage from "../pages/mentoring/main/MentoringPage"
 import MentoringDetaiLPage from "../pages/mentoring/detail/MentoringDetaiLPage"
 import ForumPage from "../pages/forum/main/ForumPage"
 import ForumDetailPage from "../pages/forum/detail/ForumDetailPage"
+import MentoringRoomPage from "../pages/mentoring/room/MentoringRoomPage"
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: '/mentoring',
                 element: <MentoringPage/>
+            },
+            {
+                path: '/mentoring/room/:id',
+                element: <MentoringRoomPage/>
             },
             {
                 path: '/mentoring/:slug',

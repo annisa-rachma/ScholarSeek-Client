@@ -2,7 +2,8 @@ import { useInfiniteQuery } from "@tanstack/react-query"
 import InfiniteScroll from "react-infinite-scroll-component"
 import ReachedTheEnd from "./ReachedTheEnd"
 import Loading from "../Loading"
-import DiscussionCard from "../DiscussionCard"
+import DiscussionCard from "../cards/DiscussionCard"
+import DiscussionCardProps from "../../data/discussionCardProp.json"
 
 export default function ForumInfiniteScroll({
     url_with_limit_and_offset_query,
@@ -50,20 +51,9 @@ export default function ForumInfiniteScroll({
                             articles.map((article, i) => (
                                 <DiscussionCard
                                     key={i}
-                                    slug={"ini-pura-puranya-slug-mentoring"}
-                                    likes={4}
-                                    dislikes={1}
-                                    commentCount={12}
+                                    {...DiscussionCardProps}
                                     title={article.title}
-                                    desc={
-                                        "Deserunt laborum incididunt laborum pariatur minim nostrud aute ea sit labore consectetur. Nulla minim labore esse est laboris culpa reprehenderit commodo. Ut incididunt veniam ipsum reprehenderit aute anim occaecat minim sint. Nulla minim officia consequat sunt aliquip eu id. Sit pariatur nostrud ea esse ea veniam excepteur esse anim enim sit nostrud. Sit nisi deserun."
-                                    }
-                                    createdAt={"sejam yang lalu"}
-                                    user={{
-                                        username: "Awal Ganteng",
-                                        profilePicture:
-                                            "https://avatars.githubusercontent.com/u/102479369?v=4",
-                                    }}
+                                    desc={article.body}
                                 />
                             ))}
                     </div>

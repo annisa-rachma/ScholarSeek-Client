@@ -2,7 +2,8 @@ import { useInfiniteQuery } from "@tanstack/react-query"
 import InfiniteScroll from "react-infinite-scroll-component"
 import ReachedTheEnd from "./ReachedTheEnd"
 import Loading from "../Loading"
-import MentoringCard from "../MentoringCard"
+import MentoringCard from "../cards/MentoringCard"
+import mentoringCardProp from '../../data/mentoringCardProp.json'
 
 export default function MentoringInfiniteScroll({
     url_with_limit_and_offset_query,
@@ -49,20 +50,8 @@ export default function MentoringInfiniteScroll({
                         {articles &&
                             articles.map((article, i) => (
                                 <MentoringCard
-                                    key={i}
-                                    slug={"ini-pura-puranya-slug-mentoring"}
-                                    image={
-                                        "https://embed-ssl.wistia.com/deliveries/3abd4a7e9cb147f201b51fcc4a364c90.webp?image_crop_resized=1280x720"
-                                    }
-                                    date={"1 Nov 2023"}
-                                    time={"14.00 WIB"}
-                                    title={article.title}
-                                    user={{
-                                        profilePicture:
-                                            "https://cdn.discordapp.com/avatars/425207717985124362/04ea769340dabe1f1b30cf6b51289245?size=1024",
-                                        username: "Willy Hardian",
-                                        status: "Hacktiv Awardee 1945",
-                                    }}
+                                    key={i} {...mentoringCardProp} title={article.title}
+                                   
                                 />
                             ))}
                     </div>

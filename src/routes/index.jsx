@@ -7,6 +7,7 @@ import ScholarshipDetailPage from "../pages/scholarship/detail/ScholarshipDetail
 import MentoringPage from "../pages/mentoring/main/MentoringPage"
 import MentoringDetaiLPage from "../pages/mentoring/detail/MentoringDetaiLPage"
 import ForumPage from "../pages/forum/main/ForumPage"
+import ForumDetailPage from "../pages/forum/detail/ForumDetailPage"
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
             {
                 path: '/forum',
                 element: <ForumPage/>
+            },
+            {
+                path: '/forum/:slug',
+                element: <ForumDetailPage/>
             }
         ],
     },

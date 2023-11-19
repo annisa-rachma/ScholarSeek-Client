@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import MiniProfile from "./MiniProfile"
-import IconWithNum from "./IconWithNum"
-import BookmarkButton from "./BookmarkButton"
+import MiniProfile from "../MiniProfile"
+import IconWithNum from "../IconWithNum"
+import BookmarkButton from "../BookmarkButton"
 import { AiOutlineLike } from "react-icons/ai"
 import { AiOutlineDislike } from "react-icons/ai"
 import { VscComment } from "react-icons/vsc"
@@ -39,8 +39,12 @@ export default function DiscussionCard({
                 image={user.profilePicture}
             />
             <div className="flex flex-col gap-1">
-                <h1 className="font-extrabold text-primary text-xl ellipsis-3">{title}</h1>
-                <p className="text-slate-500 text-[12px] md:text-sm ellipsis-4">{desc}</p>
+                <h1 className="font-extrabold text-primary text-xl ellipsis-3">
+                    {title}
+                </h1>
+                <p className="text-slate-500 text-[12px] md:text-sm ellipsis-4">
+                    {desc}
+                </p>
             </div>
             <div className="border border-b-primary" />
             <section className="flex justify-between items-center">
@@ -57,10 +61,7 @@ export default function DiscussionCard({
                         icon={<AiOutlineDislike />}
                         num={dislikes}
                     />
-                    <IconWithNum
-                        icon={<VscComment />}
-                        num={commentCount}
-                    />
+                    <IconWithNum icon={<VscComment />} num={commentCount} />
                 </div>
                 <BookmarkButton
                     className="relative z-[2] p-2 text-2xl"

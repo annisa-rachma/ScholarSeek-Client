@@ -12,7 +12,7 @@ export default function MentoringCard({
 }) {
     return (
         <Link
-            to={`/scholarships/${slug}`}
+            to={`/mentoring/${slug}`}
             className={` border border-primary/30 text-primary overflow-hidden w-full rounded-xl group flex flex-col ${className}`}
         >   
             <div className="max-h-[200px] overflow-hidden grid place-content-center">

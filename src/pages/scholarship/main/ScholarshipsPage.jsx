@@ -26,6 +26,7 @@ export default function ScholarshipsPage() {
                             name="q"
                             placeholder="Cari beasiswa"
                             includeButton
+                            className="flex-[1]"
                         />
                     </div>
                     <InfiniteScroll

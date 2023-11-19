@@ -25,34 +25,34 @@ export default function ScrollarShipInfiniteScroll({
         queryKey: ["data"],
         queryFn: fetchData,
         getNextPageParam: (lastPage) => {
-            if (lastPage.prevOffSet + limit > lastPage.articlesCount)
+            if (lastPage.prevOffSet + limit > lastPage.totalScholarships)
                 return null
             return lastPage.prevOffSet + limit
         },
     })
-    const articles = data?.pages.reduce((arr, current) => {
-        return [...arr, ...current.articles]
+    const scholarships = data?.pages.reduce((arr, current) => {
+        return [...arr, ...current.scholarships]
     }, [])
 
     return (
         <>
-            {!articles ? (
+            {!scholarships ? (
                 <Loading className="flex-[1]" />
             ) : (
                 <InfiniteScroll
-                    dataLength={articles ? articles.length : 0}
+                    dataLength={scholarships ? scholarships.length : 0}
                     next={() => fetchNextPage()}
                     hasMore={hasNextPage}
                     loader={<div className="loading-dots mx-auto my-6"></div>}
                     endMessage={<ReachedTheEnd />}
                 >
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {articles &&
-                            articles.map((article, i) => (
+                        {scholarships &&
+                            scholarships.map((scholarship, i) => (
                                 <ScholarshipCard
                                     key={i}
-                                    {...ScholarshipProp}
-                                    title={article.title}
+                                    {...scholarship}
+                                    // title={scholarship.title}
                                 />
                             ))}
                     </div>

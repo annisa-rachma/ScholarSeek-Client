@@ -4,14 +4,13 @@ import PageTitle from "../../../components/PageTitle"
 import SearchBar from "../../../components/form/SearchBar"
 import FilterButton_Modal from "./FilterButton_Modal"
 import FilterMenu from "./FilterMenu"
+import getFormEntries from "../../../lib/getFormEntries"
 
-export default function Scholarships() {
+export default function ScholarshipsPage() {
     function handleSubmit(e) {
         e.preventDefault()
-        const myFormData = new FormData(e.target)
-        const formDataObj = {}
-        myFormData.forEach((value, key) => (formDataObj[key] = value))
-        console.log(formDataObj)
+        const formEntriesObj = getFormEntries(e)
+        console.log(formEntriesObj)
     }
 
     return (

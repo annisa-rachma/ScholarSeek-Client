@@ -9,6 +9,7 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
         { to: "/", name: "Home" },
         { to: "scholarships", name: "Scholarships" },
         { to: "about", name: "About" },
+        { to: "mentoring", name: "Mentoring" },
     ]
 
     return (

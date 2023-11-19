@@ -3,7 +3,7 @@ import PageContainer from "../../../components/PageContainer"
 import HeaderInfo from "./HeaderInfo"
 import { CiBookmark } from "react-icons/ci"
 
-export default function ScholarshipDetail() {
+export default function ScholarshipDetailPage() {
     return (
         <PageContainer>
             <div className="flex justify-between items-start">

@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom"
-import MiniProfile from "../MiniProfile"
+import MiniNavProfile from "./MiniNavProfile"
 import NavbarProfileDropDown from "./NavbarProfileDropDown"
 
 export default function NavbarProfile({ isLoggedIn, forMobile }) {
     if (isLoggedIn)
         return (
             <div className="relative group ">
-                <MiniProfile
+                <MiniNavProfile
                     username="Bambang"
                     image="https://source.boringavatars.com/beam/40/eehehe"
                     role="Mentee"

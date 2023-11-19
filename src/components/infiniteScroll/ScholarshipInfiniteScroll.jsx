@@ -1,8 +1,9 @@
 import { useInfiniteQuery } from "@tanstack/react-query"
 import InfiniteScroll from "react-infinite-scroll-component"
-import ScholarshipCard from "../ScholarshipCard"
+import ScholarshipCard from "../cards/ScholarshipCard"
 import ReachedTheEnd from "./ReachedTheEnd"
 import Loading from "../Loading"
+import ScholarshipProp from "../../data/scholarshipCardProp.json"
 
 export default function ScrollarShipInfiniteScroll({
     url_with_limit_and_offset_query,
@@ -49,15 +50,9 @@ export default function ScrollarShipInfiniteScroll({
                         {articles &&
                             articles.map((article, i) => (
                                 <ScholarshipCard
-                                    slug={'ini-pura-puranya-slug-scholarship'}
                                     key={i}
+                                    {...ScholarshipProp}
                                     title={article.title}
-                                    country="Indonesia"
-                                    countryCode="ID"
-                                    degree="S3"
-                                    open="1 Nov 2023"
-                                    fundingType="Fully Funded"
-                                    deadline="24 Des 2023"
                                 />
                             ))}
                     </div>

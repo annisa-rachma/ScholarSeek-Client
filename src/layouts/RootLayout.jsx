@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 import Navbar from "../components/navbar/Navbar"
 import { useState } from "react"
 import Footer from "../components/Footer"
-import ScrollToTop from "../components/ScrollToTop"
+import ScrollToTop from "../utlis/ScrollToTop"
 
 export default function RootLayout() {
     const [isOpen, setIsOpen] = useState(false)

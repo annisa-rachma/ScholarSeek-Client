@@ -7,7 +7,7 @@ import bannerImg from "../../assets/banner-bawah.png"
 import Button from "../../components/Button"
 import Carousel from "../../components/Carousel"
 import scholarships from "../../data/scholarships.json"
-import ScholarshipCard from "../../components/ScholarshipCard"
+import ScholarshipCard from "../../components/cards/ScholarshipCard"
 import Banner from "../../components/Banner"
 
 export default function Home() {

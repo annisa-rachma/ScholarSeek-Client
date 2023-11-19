@@ -1,17 +1,18 @@
+import BookmarkButton from "../../../components/BookmarkButton"
 import PageContainer from "../../../components/PageContainer"
 import BodyInfo from "./BodyInfo"
 import HeaderInfo from "./HeaderInfo"
-import { CiBookmark } from "react-icons/ci"
 
 export default function MentoringDetailPage() {
+    function addBookMark() {
+        alert('mentor bookmarked!')
+    }
     return (
         <PageContainer>
             <div className="flex justify-between items-center">
                 <HeaderInfo date={"1 Nov 2023"} time={"14.00 WIB"} />
-                <div className="">
-                    <button className="text-4xl md:text-5xl text-primary">
-                        <CiBookmark />
-                    </button>
+                <div className="text-4xl md:text-5xl">
+                    <BookmarkButton onClick={addBookMark}/>
                 </div>
             </div>
             <BodyInfo

@@ -1,9 +1,11 @@
 import {combineReducers, applyMiddleware, legacy_createStore as createStore} from "redux"
 import thunk from 'redux-thunk'
+import mentoringReducer from "./reducers/mentoringReducer"
 import scholarshipsReducer from "./reducers/scholarshipReducer"
 
 const rootReducer = combineReducers({
     scholarshipsReducer : scholarshipsReducer,
+    mentoringReducer : mentoringReducer
 })
 
 let store = createStore(rootReducer, applyMiddleware(thunk))

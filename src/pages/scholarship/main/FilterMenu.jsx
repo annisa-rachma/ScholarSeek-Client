@@ -3,7 +3,7 @@ import CheckBox from "../../../components/form/checkBox"
 import SearchInput from "../../../components/form/SearchInput"
 import Button from "../../../components/Button"
 
-export default function FilterMenu({ className }) {
+export default function FilterMenu({ className, onSubmit }) {
     const [form, setForm] = useState({
         degree: [],
         funding: [],
@@ -53,7 +53,7 @@ export default function FilterMenu({ className }) {
     ]
 
     return (
-        <form className={`md:col-span-1 flex flex-col ${className}`}>
+        <form className={`md:col-span-1 flex flex-col ${className}`} onSubmit={onSubmit}>
             <h5 className="text-3xl text-primary font-bold py-3">Filter</h5>
             <section className="flex flex-col gap-4">
                 <div className="border-t border-t-primary flex flex-col pt-4">

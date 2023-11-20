@@ -12,6 +12,7 @@ import Banner from "../../components/Banner"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchScholarships } from "../../stores/actions/actionScholarships"
+import Loading from "../../components/Loading"
 
 export default function Home() {
     const [loading, setLoading] = useState(false)
@@ -40,6 +41,9 @@ export default function Home() {
     let scholarships = scholarshipsData.scholarships
 
     // console.log(scholarshipsData)
+    if (loading) {
+        return <Loading className="flex-[1]" />; // You can replace this with a loading spinner or any other loading indicator
+      }
 
     return (
         <>
@@ -51,8 +55,8 @@ export default function Home() {
                 desc="Telusuri informasi beasiswa terbaru dari seluruh dunia. Dapatkan berbagai jenis beasiswa, baik sebagian maupun sepenuhnya, di dalam maupun di luar negeri!"
             />
             <div className="flex flex-col">
-                {loading && <p>Loading...</p>}
-                {!loading && <Carousel>
+                {/* {loading && <p>Loading...</p>} */}
+                <Carousel>
                     {scholarships?.map((scholarship, i) => (
                         <ScholarshipCard
                             // slug={"ini-pura-puranya-slug-scholarship"}
@@ -61,7 +65,7 @@ export default function Home() {
                             className="mx-2"
                         />
                     ))}
-                </Carousel>}
+                </Carousel>
                 
                 <Button
                     type="link"

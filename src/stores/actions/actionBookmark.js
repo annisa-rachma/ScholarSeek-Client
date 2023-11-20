@@ -24,3 +24,28 @@ export function fetchBookmarkScholarship() {
         }
       }
 }
+
+export function fetchBookmarkMentoring() {
+    return async function (dispatch) {
+        try {
+
+          let url = BASE_URL + "/bookmarks/mentoring"
+
+          const res = await fetch( url, {
+            headers: {
+                access_token: localStorage.access_token,
+            },
+          });
+          const data = await res.json();
+          if (!res.ok) {
+            throw data;
+          }
+          dispatch({
+            type : 'fetch/getBookmarkMentoring',
+            payload : data
+        });
+        } catch (error) {
+            throw error;
+        }
+      }
+}

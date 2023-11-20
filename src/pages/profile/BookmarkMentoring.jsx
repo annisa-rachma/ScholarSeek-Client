@@ -1,29 +1,48 @@
 import PageContainer from "../../components/PageContainer";
 import HeaderProfile from "./detail/Header";
 import ProfileNav from "./detail/ProfileNav";
+import MentoringCard from "../../components/cards/MentoringCard"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBookmarkMentoring } from "../../stores/actions/actionBookmark";
+import Loading from "../../components/Loading";
 
 export default function BookmarkMentoring() {
+  const [loading, setLoading] = useState(false)
+    const mentoring = useSelector((state) => {
+        return state.bookmarkReducer.bookmarkMentoring
+    })
+    const dispatch = useDispatch()
 
-    let schools = [
-        {
-          "id": 3,
-          "UserId": 3,
-          "school": "ITB",
-          "major": "S1 Arsitektur",
-          "scholarship": null,
-          "year": "2020-present"
-        }
-      ]
+    const fetchData = async () => {
+    try {
+      setLoading(true);
+      await dispatch(fetchBookmarkMentoring());
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <PageContainer className={`mb-12`}>
-        <HeaderProfile/>
+        <HeaderProfile />
 
         <div className="relative mt-[350px] flex-[1] ">
-          <ProfileNav/>
-          
-          <div className="mt-8 flex flex-col gap-4 ">
-            mentoring
+          <ProfileNav />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+          {loading &&  <Loading className="flex-[1]"/> }
+            {!loading &&
+              mentoring?.map((mentoring, i) => (
+                <MentoringCard key={i} {...mentoring} />
+              ))}
           </div>
         </div>
       </PageContainer>

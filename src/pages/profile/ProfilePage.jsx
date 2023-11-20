@@ -31,10 +31,11 @@ export default function ProfilePage() {
                 <h1 className="text-primary text-lg font-bold mb-2">Pendidikan</h1>
 
                 <div className="border p-4 border-primary rounded-lg">
-                    {schools?.map((el) => {
+                    {schools?.map((el, i) => {
                         return(
                             <>
-                            <div className="flex-col flex gap-2">
+                            
+                            <div key={i} className="flex-col flex gap-2">
                                 <div className="flex">
                                     <h1 className="w-[200px] text-primary font-bold">Sekolah/Universitas</h1>
                                     <p>{el.school}</p>

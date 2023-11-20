@@ -9,6 +9,8 @@ export default {
                 accent_text: '#FFE993',
                 accent_yellow: "#F6E049",
                 accent_pink: "#F9D9EB",
+
+                
             }
         },
     },

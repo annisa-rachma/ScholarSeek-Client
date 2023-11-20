@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2"
-import { CgClose } from "react-icons/cg"
 import FilterMenu from "./FilterMenu"
+import CloseButton from "../../../components/buttons/CloseButton"
 
 export default function FilterButton_Modal() {
     const [isOpen, setIsOpen] = useState(false)
@@ -26,12 +26,7 @@ export default function FilterButton_Modal() {
                     isOpen ? "max-h-[100vh] p-6" : "max-h-[0vh]"
                 }`}
             >
-                <button
-                    className="absolute right-6 top-6"
-                    onClick={() => setIsOpen(false)}
-                >
-                    <CgClose className="text-3xl text-slate-500" />
-                </button>
+                <CloseButton onClick={() => setIsOpen(false)} className="absolute right-6 top-6 text-3xl text-slate-500"/>
                 <FilterMenu />
             </article>
         </>

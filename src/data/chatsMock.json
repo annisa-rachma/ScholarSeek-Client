@@ -1,0 +1,22 @@
+[
+    {"username": "user123", "value": "Hi there! How are you today?"},
+    {"username": "alpha456", "value": "Just chilling, what about you?"},
+    {"username": "beta789", "value": "Nice weather we're having."},
+    {"username": "gamma321", "value": "What's up? Anything new?"},
+    {"username": "delta654", "value": "I love coding, it's so much fun!"},
+    {"username": "epsilon987", "value": "Watching a movie, wanna join?"},
+    {"username": "omega123", "value": "How's your day going so far?"},
+    {"username": "sigma456", "value": "Hanging out with friends later."},
+    {"username": "theta789", "value": "Coffee or tea? I can't decide."},
+    {"username": "zeta321", "value": "Just finished a good book."},
+    {"username": "kappa654", "value": "Excited for the weekend!"},
+    {"username": "lambda987", "value": "What's your favorite hobby?"},
+    {"username": "nu123", "value": "Playing some music, feeling creative."},
+    {"username": "mu456", "value": "Pizza or burgers for dinner?"},
+    {"username": "rho789", "value": "Have you been to that new cafe?"},
+    {"username": "phi321", "value": "I love hiking, so refreshing."},
+    {"username": "chi654", "value": "Any recommendations for movies?"},
+    {"username": "psi987", "value": "Just got back from a workout."},
+    {"username": "xi123", "value": "Weekend plans? Let's do something fun!"},
+    {"username": "tau456", "value": "Mind if I ask what you do for a living?"}
+  ]

@@ -102,3 +102,31 @@ label {
             calc(100% / 3) 0%;
     }
 }
+
+.scrollbar
+{
+	overflow-y: scroll;
+}
+
+.scrollbar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+	background-color: #ffffffd1;
+}
+
+.scrollbar::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #ffffff;
+}
+
+.scrollbar::-webkit-scrollbar-thumb
+{
+	background-color: #c8c8c8;
+}
+
+@media (width < 1024px) {
+    .streaming-side-bar {
+        height: 80vh;
+    }
+}

@@ -7,10 +7,12 @@ import NavbarProfile from "./NavbarProfile"
 export default function Navbar({ toggleNav, closeNav, isOpen }) {
     const links = [
         { to: "/", name: "Home" },
-        { to: "scholarships", name: "Scholarships" },
-        { to: "about", name: "About" },
-        { to: "mentoring", name: "Mentoring" },
-        { to: "forum", name: "Forum" },
+        { to: "/scholarships", name: "Scholarships" },
+        { to: "/about", name: "About" },
+        { to: "/mentoring", name: "Mentoring" },
+        { to: "/mentoring/room/ceritanya-ini-room-id", name: "Mentor Room" },
+        { to: "/join-room", name: "Join" },
+        { to: "/forum", name: "Forum" },
     ]
 
     return (
@@ -35,6 +37,7 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
                                 className="navbar"
                                 key={link.to}
                                 to={link.to}
+                                end
                             >
                                 {link.name}
                             </NavLink>

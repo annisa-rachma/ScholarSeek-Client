@@ -2,18 +2,15 @@ import { Link } from "react-router-dom"
 import MiniProfile from "../MiniProfile"
 
 export default function MentoringCard({
-    slug,
-    className,
-    User,
-    imageUrl,
-    schedule, hour, title
-    // date,
-    // time,
-    // title,
-    // user,
-    // men
+    slug ,
+          imageUrl ,
+          schedule ,
+          hour,
+          title , profileImg,
+          name,
+          status, className
 }) {
-    let name = `${User.firstName} ${User.lastName}`
+    // let name = `${User.firstName} ${User.lastName}`
     return (
         <Link
             to={`/mentoring/${slug}`}
@@ -37,8 +34,8 @@ export default function MentoringCard({
                 </div>
                 <MiniProfile
                     title={name}
-                    image={User.profileImg}
-                    desc={User.userSchools[0].scholarship}
+                    image={profileImg}
+                    desc={status}
                 />
             </div>
         </Link>

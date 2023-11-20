@@ -14,9 +14,9 @@ export default function MentoringPage() {
         e.preventDefault()
         const formEntriesObj = getFormEntries(e)
         navigate(
-            `/mentoring?name=${formEntriesObj.search}`
+            `/mentoring?title=${formEntriesObj.search}`
             );
-        console.log(formEntriesObj)
+        // console.log(formEntriesObj)
     }
     
 

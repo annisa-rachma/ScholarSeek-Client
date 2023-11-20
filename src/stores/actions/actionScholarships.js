@@ -1,4 +1,4 @@
-import { BASE_URL } from "./base_url";
+import { BASE_URL } from "../../routes/base_url";
 
 export function fetchScholarships(params = {}) {
     return async function (dispatch) {

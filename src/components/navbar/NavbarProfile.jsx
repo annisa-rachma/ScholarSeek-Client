@@ -19,13 +19,13 @@ export default function NavbarProfile({ isLoggedIn, forMobile }) {
         <div className={`flex ${forMobile ? 'flex-col items-end': 'flex-row'} gap-[30px]`}>
             <Link
                 to="/log-in"
-                className={`border border-primary text-primary px-6 py-2 rounded-md ${forMobile ? 'text-end max-w-max': 'text-center'} `}
+                className={`border border-primary text-primary hover:bg-primary hover:text-white px-6 py-2 rounded-md ${forMobile ? 'text-end max-w-max': 'text-center'} `}
             >
                 Login
             </Link>
             <Link
                 to="/sign-up"
-                className={`bg-primary text-white px-6 py-2 rounded-md ${forMobile ? 'text-end max-w-max': 'text-center'} `}
+                className={`bg-primary text-white hover:bg-[#2b4bc9] px-6 py-2 rounded-md ${forMobile ? 'text-end max-w-max': 'text-center'} `}
             >
                 Sign Up
             </Link>

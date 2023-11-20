@@ -39,7 +39,8 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
                                 {link.name}
                             </NavLink>
                         ))}
-                        <NavbarProfile isLoggedIn />
+                        <NavbarProfile  />
+                        {/* isLoggedIn */}
                     </div>
                 </div>
             </nav>

@@ -7,8 +7,10 @@ import FilterMenu from "./FilterMenu"
 import getFormEntries from "../../../lib/getFormEntries"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { BASE_URL } from "../../../routes/base_url"
 
 export default function ScholarshipsPage() {
+    let url = `${BASE_URL}/scholarships`
     const navigate = useNavigate()
 
     function handleSubmit(e) {
@@ -31,7 +33,6 @@ export default function ScholarshipsPage() {
             `/scholarships?${queryString}`
         );
     }
-    let url = `http://localhost:3000/client/scholarships`
 
     return (
         <PageContainer className="flex flex-col gap-6">

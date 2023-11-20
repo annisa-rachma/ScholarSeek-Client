@@ -8,6 +8,7 @@ import MentoringPage from "../pages/mentoring/main/MentoringPage"
 import MentoringDetaiLPage from "../pages/mentoring/detail/MentoringDetaiLPage"
 import ForumPage from "../pages/forum/main/ForumPage"
 import ForumDetailPage from "../pages/forum/detail/ForumDetailPage"
+import LoginPage from "../pages/Login"
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
+            },
+            {
+                path: "/log-in",
+                element: <LoginPage />,
             },
             {
                 path: "/about",

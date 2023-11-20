@@ -36,6 +36,7 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
                                 className="navbar"
                                 key={link.to}
                                 to={link.to}
+                                end
                             >
                                 {link.name}
                             </NavLink>

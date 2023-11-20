@@ -5,7 +5,7 @@ export default function StreamActionButton({ activeIcon, inactiveIcon }) {
    return (
       <button
          className={`py-2 px-4 rounded-xl text-2xl text-white ${
-            active ? 'bg-violet-700' : 'bg-gray-700'
+            active ? 'bg-primary' : 'bg-gray-400'
          }`}
          onClick={() => setIsActive((prev) => !prev)}
       >

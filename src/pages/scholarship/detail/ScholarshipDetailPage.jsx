@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import BookmarkButton from "../../../components/BookmarkButton";
+import BookmarkButton from "../../../components/buttons/BookmarkButton";
 import InfoTable from "../../../components/InfoTable";
 import Loading from "../../../components/Loading";
 import PageContainer from "../../../components/PageContainer";

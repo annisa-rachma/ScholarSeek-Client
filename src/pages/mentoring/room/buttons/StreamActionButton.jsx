@@ -11,5 +11,7 @@ export default function StreamActionButton({ activeIcon, inactiveIcon }) {
       >
          {activeIcon ? (active ? activeIcon : inactiveIcon) : inactiveIcon}
       </button>
+      
    )
 }
+

@@ -124,3 +124,9 @@ label {
 {
 	background-color: #c8c8c8;
 }
+
+@media (width < 1024px) {
+    .streaming-side-bar {
+        height: 80vh;
+    }
+}

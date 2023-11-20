@@ -4,15 +4,24 @@ import ReachedTheEnd from "./ReachedTheEnd"
 import Loading from "../Loading"
 import DiscussionCard from "../cards/DiscussionCard"
 import DiscussionCardProps from "../../data/discussionCardProp.json"
+import { useLocation } from "react-router-dom"
+import { useEffect } from "react"
 
 export default function ForumInfiniteScroll({
     url_with_limit_and_offset_query,
     limit,
 }) {
+    const location = useLocation()
+    useEffect(()=> {
+        fetchNextPage();
+    }, [location])
+
     async function fetchData({ pageParam = 0 }) {
         try {
             const res = await fetch(
-                `${url_with_limit_and_offset_query}?limit=${limit}&offset=${pageParam}`
+                `${url_with_limit_and_offset_query}?limit=${limit}&offset=${pageParam}&${
+                    location.search ? `${location.search.slice(1)}` : "?"
+                  }`
             )
             const data = await res.json()
             return { ...data, prevOffSet: pageParam }
@@ -22,7 +31,7 @@ export default function ForumInfiniteScroll({
     }
 
     const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-        queryKey: ["data"],
+        queryKey: [location.search ||"data"],
         queryFn: fetchData,
         getNextPageParam: (lastPage) => {
             if (lastPage.prevOffSet + limit > lastPage.articlesCount)

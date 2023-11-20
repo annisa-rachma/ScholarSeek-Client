@@ -3,8 +3,10 @@ import PageTitle from "../../../components/PageTitle"
 import SearchBar from "../../../components/form/SearchBar"
 import MentoringInfiniteScroll from "../../../components/infiniteScroll/MentoringInfiniteScroll"
 import getFormEntries from "../../../lib/getFormEntries"
+import { BASE_URL } from "../../../routes/base_url"
 
 export default function MentoringPage() {
+    let url = `${BASE_URL}/mentoring`
     function handleSubmit(e) {
         e.preventDefault()
         const formEntriesObj = getFormEntries(e)

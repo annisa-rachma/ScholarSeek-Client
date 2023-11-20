@@ -3,12 +3,20 @@ import PageTitle from "../../../components/PageTitle"
 import SearchBar from "../../../components/form/SearchBar"
 import ForumInfiniteScroll from "../../../components/infiniteScroll/ForumInfiniteScroll"
 import getFormEntries from "../../../lib/getFormEntries"
+import { BASE_URL } from "../../../routes/base_url"
+import { useNavigate } from "react-router-dom"
 
 export default function ForumPage() {
+    let url = `${BASE_URL}/threads`
+    const navigate = useNavigate()
+
     function handleSubmit(e) {
         e.preventDefault()
         const formEntriesObj = getFormEntries(e)
         console.log(formEntriesObj)
+        navigate(
+            `/scholarships?title=${formEntriesObj.search}`
+        );
     }
 
     return (
@@ -16,12 +24,12 @@ export default function ForumPage() {
             <PageTitle>Forum</PageTitle>
             <SearchBar
                 includeButton
-                name="q"
+                name="search"
                 onSubmit={handleSubmit}
-                placeholder="Cari topik atau nama mentor"
+                placeholder="Cari topik..."
             />
             <ForumInfiniteScroll
-                url_with_limit_and_offset_query="https://api.realworld.io/api/articles"
+                url_with_limit_and_offset_query={url}
                 limit={10}
             />
         </PageContainer>

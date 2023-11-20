@@ -31,7 +31,7 @@ export default function ScholarshipsPage() {
                     </div>
                     <InfiniteScroll
                         url_with_limit_and_offset_query="http://localhost:3000/client/scholarships"
-                        limit={6}
+                        limit={8}
                     />
                 </article>
             </div>

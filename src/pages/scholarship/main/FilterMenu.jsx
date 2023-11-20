@@ -38,7 +38,7 @@ export default function FilterMenu({ className }) {
             [e.target.name]: e.target.value,
         }))
     }
-    console.log(form)
+    // console.log(form)
 
     const degrees = [
         { id: "degree", name: "S1", value: "s1" },

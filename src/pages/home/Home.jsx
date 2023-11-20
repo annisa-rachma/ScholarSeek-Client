@@ -6,11 +6,41 @@ import forumImg from "../../assets/forum-image.png"
 import bannerImg from "../../assets/banner-bawah.png"
 import Button from "../../components/Button"
 import Carousel from "../../components/Carousel"
-import scholarships from "../../data/scholarships.json"
+// import scholarships from "../../data/scholarships.json"
 import ScholarshipCard from "../../components/cards/ScholarshipCard"
 import Banner from "../../components/Banner"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchScholarships } from "../../stores/actions/actionScholarships"
 
 export default function Home() {
+    const [loading, setLoading] = useState(false)
+    const scholarshipsData = useSelector((state) => {
+        return state.scholarshipsReducer.scholarships;
+      });
+    const dispatch = useDispatch()
+
+    const fetchData = async () => {
+        try {
+            setLoading(true)
+            await dispatch(fetchScholarships());
+          } catch (error) {
+            console.log(error);
+          } 
+          finally {
+            setLoading(false)
+          }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+    // console.log(scholarshipsData)
+
+    let scholarships = scholarshipsData.scholarships
+
+    // console.log(scholarshipsData)
+
     return (
         <>
             <Hero />
@@ -21,20 +51,22 @@ export default function Home() {
                 desc="Telusuri informasi beasiswa terbaru dari seluruh dunia. Dapatkan berbagai jenis beasiswa, baik sebagian maupun sepenuhnya, di dalam maupun di luar negeri!"
             />
             <div className="flex flex-col">
-                <Carousel>
-                    {scholarships.map((data, i) => (
+                {loading && <p>Loading...</p>}
+                {!loading && <Carousel>
+                    {scholarships?.map((scholarship, i) => (
                         <ScholarshipCard
-                            slug={"ini-pura-puranya-slug-scholarship"}
+                            // slug={"ini-pura-puranya-slug-scholarship"}
                             key={i}
-                            {...data}
+                            {...scholarship}
                             className="mx-2"
                         />
                     ))}
-                </Carousel>
+                </Carousel>}
+                
                 <Button
                     type="link"
                     to="scholarships"
-                    className="bg-primary text-white max-w-max m-auto"
+                    className="bg-primary hover:bg-[#2f4eca] text-white max-w-max m-auto"
                 >
                     Temukan beasiswa lainnya
                 </Button>

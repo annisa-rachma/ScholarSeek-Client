@@ -4,12 +4,13 @@ import NavbarProfileDropDown from "./NavbarProfileDropDown"
 
 export default function NavbarProfile({ isLoggedIn, forMobile }) {
     if (isLoggedIn)
+        
         return (
             <div className="relative group ">
                 <MiniNavProfile
-                    username="Bambang"
-                    image="https://source.boringavatars.com/beam/40/eehehe"
-                    role="Mentee"
+                    username={localStorage.name}
+                    image={localStorage.profileImg}
+                    role={localStorage.role}
                 />
                 <NavbarProfileDropDown className="absolute bottom-[-5px] translate-y-[100%] right-0 duration-300 overflow-hidden max-h-[0px] group-hover:max-h-[200px]" />
             </div>

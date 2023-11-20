@@ -39,8 +39,8 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
                                 {link.name}
                             </NavLink>
                         ))}
-                        <NavbarProfile  />
-                        {/* isLoggedIn */}
+                        {localStorage.access_token ? <NavbarProfile isLoggedIn  /> : <NavbarProfile  />}
+                        
                     </div>
                 </div>
             </nav>

@@ -6,8 +6,8 @@ import { LuLogOut } from "react-icons/lu"
 export default function NavbarProfileDropDown({ className }) {
     let navigate = useNavigate()
     const links = [
-        { icon: <AiOutlineUser />, name: "Profile", to: "/profile" },
-        { icon: <HiOutlineBookmark />, name: "BookMarks", to: "/bookmarks" },
+        { icon: <AiOutlineUser />, name: "Profile", to: `/profile/${localStorage.slug}` },
+        { icon: <HiOutlineBookmark />, name: "BookMarks", to: "/bookmarks/scholarships" },
         // { icon: <LuLogOut />, name: "Logout", to: "/logout" },
     ]
 

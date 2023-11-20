@@ -20,6 +20,7 @@ export function handleLogin(payload) {
         localStorage.setItem("name", data.name);
         localStorage.setItem("role", data.role);
         localStorage.setItem("profileImg", data.profileImg);
+        localStorage.setItem("slug", data.slug)
       } catch (error) {
         throw error;
       }

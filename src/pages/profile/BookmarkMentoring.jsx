@@ -1,20 +1,21 @@
 import PageContainer from "../../components/PageContainer";
 import HeaderProfile from "./detail/Header";
 import ProfileNav from "./detail/ProfileNav";
-import MentoringCard from "../../components/cards/MentoringCard"
+import MentoringCard from "../../components/cards/MentoringCard";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBookmarkMentoring } from "../../stores/actions/actionBookmark";
 import Loading from "../../components/Loading";
+import { fetchUserDetail } from "../../stores/actions/actionUser";
 
 export default function BookmarkMentoring() {
-  const [loading, setLoading] = useState(false)
-    const mentoring = useSelector((state) => {
-        return state.bookmarkReducer.bookmarkMentoring
-    })
-    const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false);
+  const mentoring = useSelector((state) => {
+    return state.bookmarkReducer.bookmarkMentoring;
+  });
+  const dispatch = useDispatch();
 
-    const fetchData = async () => {
+  const fetchData = async () => {
     try {
       setLoading(true);
       await dispatch(fetchBookmarkMentoring());
@@ -29,16 +30,39 @@ export default function BookmarkMentoring() {
     fetchData();
   }, []);
 
+  const user = useSelector((state) => {
+    return state.userReducer.userDetail;
+  });
+
+  const fetchDataUser = async () => {
+    try {
+      setLoading(true);
+      await dispatch(fetchUserDetail(localStorage.slug));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataUser();
+  }, []);
+
   return (
     <>
       <PageContainer className={`mb-12`}>
-        <HeaderProfile />
+        <HeaderProfile
+          name={user?.name}
+          profileImg={user?.profileImg}
+          status={user?.status}
+        />
 
         <div className="relative mt-[350px] flex-[1] ">
           <ProfileNav />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-          {loading &&  <Loading className="flex-[1]"/> }
+            {loading && <Loading className="flex-[1]" />}
             {!loading &&
               mentoring?.map((mentoring, i) => (
                 <MentoringCard key={i} {...mentoring} />

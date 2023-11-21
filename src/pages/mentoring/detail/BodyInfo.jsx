@@ -1,10 +1,48 @@
+import { useDispatch } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import Button from "../../../components/Button"
 import MiniProfile from "../../../components/MiniProfile"
 import TextBubble from "../../../components/textBubble/TextBubble"
+import { handleAddMentoringBookmark } from "../../../stores/actions/actionMentoring";
 import Attendees from "./Attendees"
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
 export default function BodyInfo({ image, desc, user, topics, className, totalAttendees, atendees }) {
+    const { slug } = useParams();
+    const dispatch = useDispatch();
+    const [isJoin, setIsJoin] = useState(false)
 
+    const addBookMark = async () => {
+        // console.log('masuk')
+      try {
+       await dispatch(handleAddMentoringBookmark(slug))
+      setIsJoin(true)
+      toast.info("success joining mentoring session", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      } catch (error) {
+        console.log(error)
+        toast.error(error.message, {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+      }
+    }
     return (
         <article
             className={`grid grid-cols-1  lg:grid-cols-3 gap-4 md:gap-8 ${className}`}
@@ -22,7 +60,12 @@ export default function BodyInfo({ image, desc, user, topics, className, totalAt
                 </p>
             </div>
             <div className="flex flex-col gap-4 md:gap-6">
-                <Button className="bg-primary text-white">Gabung</Button>
+                {!isJoin && <Button onClick={addBookMark} className="bg-primary text-white">Gabung</Button>}
+                {isJoin && 
+                <Link to={'/mentoring/room/ceritanya-ini-room-id'} className="w-[100%]">
+                <Button className="bg-primary text-white">
+                    Masuk ke room</Button></Link>}
+
                 <Attendees 
                     totalAttendees={totalAttendees}
                     attendees={atendees}

@@ -19,6 +19,8 @@ export default function MentoringDetailPage() {
   });
   const dispatch = useDispatch();
 
+
+  
   const fetchData = async () => {
     try {
       setLoading(true);

@@ -5,8 +5,7 @@ import SearchBar from "../../../components/form/SearchBar"
 import FilterButton_Modal from "./FilterButton_Modal"
 import FilterMenu from "./FilterMenu"
 import getFormEntries from "../../../lib/getFormEntries"
-import { useLocation, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { BASE_URL } from "../../../routes/base_url"
 
 export default function ScholarshipsPage() {

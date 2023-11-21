@@ -1,26 +1,25 @@
 import PageContainer from "../../../components/PageContainer"
 import PageTitle from "../../../components/PageTitle"
+import MentoringCard from "../../../components/cards/MentoringCard"
 import SearchBar from "../../../components/form/SearchBar"
-import MentoringInfiniteScroll from "../../../components/infiniteScroll/MentoringInfiniteScroll"
+import MyInfiniteScroll from "../../../components/infiniteScroll/MyInfiniteScroll"
+import useMyInfiniteQuery from "../../../hooks/useMyInfiniteQuery"
 import getFormEntries from "../../../lib/getFormEntries"
-import { BASE_URL } from "../../../routes/base_url"
 import { useNavigate } from "react-router-dom"
 
 export default function MentoringPage() {
-    let url = `${BASE_URL}/mentoring`
     const navigate = useNavigate()
+    const query = useMyInfiniteQuery({
+        url: `${import.meta.env.VITE_BASE_URL}/mentoring`,
+        limit: 10,
+    })
 
     function handleSubmit(e) {
         e.preventDefault()
         const formEntriesObj = getFormEntries(e)
-        navigate(
-            `/mentoring?title=${formEntriesObj.search}`
-            );
-        // console.log(formEntriesObj)
+        navigate(`/mentoring?title=${formEntriesObj.search}`)
     }
-    
 
-    // console.log(url)
     return (
         <PageContainer className="flex flex-col gap-6">
             <PageTitle>Mentoring</PageTitle>
@@ -30,10 +29,14 @@ export default function MentoringPage() {
                 onSubmit={handleSubmit}
                 placeholder="Cari topik atau nama mentor"
             />
-            <MentoringInfiniteScroll
-                url_with_limit_and_offset_query={url}
-                limit={10}
-            />
+            <MyInfiniteScroll {...query}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {query.datas &&
+                        query.datas?.map((data, i) => (
+                            <MentoringCard key={i} {...data} />
+                        ))}
+                </div>
+            </MyInfiniteScroll>
         </PageContainer>
     )
 }

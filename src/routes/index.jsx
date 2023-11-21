@@ -10,8 +10,8 @@ import ForumPage from "../pages/forum/main/ForumPage"
 import ForumDetailPage from "../pages/forum/detail/ForumDetailPage"
 import LoginPage from "../pages/Login"
 import MentoringRoomPage from "../pages/mentoring/room/MentoringRoomPage"
-// import TEST_MentoringRoom from "../pages/mentoring/room/TEST_MentoringRoom"
-// import TEST_ChannelForm from "../pages/mentoring/room/TEST_ChannelForm"
+import TEST_MentoringRoom from "../pages/mentoring/room/TEST_MentoringRoom"
+import TEST_ChannelForm from "../pages/mentoring/room/TEST_ChannelForm"
 import ProfilePage from "../pages/profile/ProfilePage"
 import BookmarkScholarship from "../pages/profile/BookmarkScholarship"
 import BookmarkForum from "../pages/profile/BookmarkForum"
@@ -46,17 +46,17 @@ export const router = createBrowserRouter([
                 path: '/mentoring',
                 element: <MentoringPage/>
             },
-            // {
-            //     path: '/join-room',
-            //     element: <TEST_ChannelForm/>
-            // },
-            // {
-            //     path: '/mentoring/room/test',
-            //     // element: <MentoringPage/>
-            //     element: <TEST_MentoringRoom/>
-            // },
             {
-                path: '/mentoring/room/:id',
+                path: '/join-room',
+                element: <TEST_ChannelForm/>
+            },
+            {
+                path: '/mentoring/room/test',
+                // element: <MentoringPage/>
+                element: <TEST_MentoringRoom/>
+            },
+            {
+                path: '/mentoring/room/:slug',
                 element: <MentoringRoomPage/>
             },
             {

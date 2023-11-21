@@ -4,21 +4,18 @@ import { FiCameraOff } from "react-icons/fi"
 import { IoMicOutline } from "react-icons/io5"
 import { IoMicOffOutline } from "react-icons/io5"
 
-// import { LuScreenShare } from "react-icons/lu"
-// import { LuScreenShareOff } from "react-icons/lu"
-
 import { RiLogoutBoxRLine } from "react-icons/ri"
 
 import { createClient } from "agora-rtc-react"
 import { useState } from "react"
-import StreamActionButton from "./buttons/StreamActionButton"
+import StreamActionButton from "../buttons/StreamActionButton"
 const config = {
     mode: "rtc",
     codec: "vp8",
 }
 const useClient = createClient(config)
 
-export default function TEST_Controls({ tracks, setStart, setInCall }) {
+export default function Controls({ tracks, setStart, setInCall }) {
     const client = useClient()
     const [trackState, setTrackState] = useState({ video: true, audio: true })
     // the type is : "audio" | "video"
@@ -58,11 +55,6 @@ export default function TEST_Controls({ tracks, setStart, setInCall }) {
             name: "audio",
             onClick: () => mute("audio"),
         },
-        // {
-        //     activeIcon: <LuScreenShare />,
-        //     inactiveIcon: <LuScreenShareOff />,
-        //     name: "shareScreen",
-        // },
         {
             inactiveIcon: <RiLogoutBoxRLine />,
             name: "leave",
@@ -71,7 +63,7 @@ export default function TEST_Controls({ tracks, setStart, setInCall }) {
     ]
 
     return (
-        <div className="controls flex gap-2">
+        <div className="absolute bottom-5 left-[50%] z-[2] translate-x-[-50%] flex gap-2">
             {actions.map((action) => (
                 <StreamActionButton
                     key={action.name}
@@ -81,19 +73,6 @@ export default function TEST_Controls({ tracks, setStart, setInCall }) {
                     onClick={action.onClick}
                 />
             ))}
-            {/* <p
-                className={trackState.audio ? "on" : ""}
-                onClick={() => mute("audio")}
-            >
-                {trackState.audio ? "MuteAudio" : "UnmuteAudio"}
-            </p>
-            <p
-                className={trackState.video ? "on" : ""}
-                onClick={() => mute("video")}
-            >
-                {trackState.video ? "MuteVideo" : "UnmuteVideo"}
-            </p>
-            {<p onClick={() => leaveChannel()}>Leave</p>} */}
         </div>
     )
 }

@@ -2,16 +2,20 @@ import { Link, useNavigate } from "react-router-dom"
 import { AiOutlineUser } from "react-icons/ai"
 import { HiOutlineBookmark } from "react-icons/hi2"
 import { LuLogOut } from "react-icons/lu"
+import { useDispatch } from "react-redux"
+import UserrAction from "../../stores/actions/actionUserr"
 
 export default function NavbarProfileDropDown({ className }) {
     let navigate = useNavigate()
+    const dispatch = useDispatch()
+
     const links = [
         { icon: <AiOutlineUser />, name: "Profile", to: `/profile/${localStorage.slug}` },
         { icon: <HiOutlineBookmark />, name: "BookMarks", to: "/bookmarks/scholarships" },
-        // { icon: <LuLogOut />, name: "Logout", to: "/logout" },
     ]
 
     const handleLogout = () => {
+        dispatch(UserrAction.logout())
         localStorage.clear();
         navigate("/");
     }
@@ -33,7 +37,6 @@ export default function NavbarProfileDropDown({ className }) {
                     <div
                         onClick={handleLogout}
                         key="Logout"
-                        // to={link.to}
                         className="flex gap-3 group hover:bg-black/10 px-5 py-2 cursor-pointer"
                     >
                         <div className="text-xl grid place-content-center">

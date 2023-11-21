@@ -2,12 +2,15 @@ import { useState } from "react"
 import CheckBox from "../../../components/form/checkBox"
 import SearchInput from "../../../components/form/SearchInput"
 import Button from "../../../components/Button"
+import { useNavigate } from "react-router"
 
-export default function FilterMenu({ className, onSubmit }) {
+export default function FilterMenu({ className }) {
+    const navigate = useNavigate()
+
     const [form, setForm] = useState({
-        degree: [],
-        funding: [],
-        country: "",
+        degrees: [],
+        isFullyFunded: [],
+        countries: "",
     })
 
     function handleToggle(e) {
@@ -40,20 +43,28 @@ export default function FilterMenu({ className, onSubmit }) {
     }
     // console.log(form)
 
+    function handleSubmit(e) {
+        e.preventDefault()
+        const degrees = form.degrees.join(',')
+        const isFullyFunded = form.isFullyFunded.join(',')
+        const query = `degrees=${degrees}&isFullyFunded=${isFullyFunded}&countries=${form.countries}`
+        navigate(`/scholarships?${query}`)
+    }
+
     const degrees = [
-        { id: "degree", name: "S1", value: "s1" },
-        { id: "degree", name: "S2", value: "s2" },
-        { id: "degree", name: "S3", value: "s3" },
-        { id: "degree", name: "Diploma", value: "diploma" },
+        { id: "degrees", name: "S1", value: "S1" },
+        { id: "degrees", name: "S2", value: "S2" },
+        { id: "degrees", name: "S3", value: "S3" },
+        // { id: "degrees", name: "Diploma", value: "diploma" },
     ]
 
     const fundings = [
-        { id: "funding", name: "Fully Funded", value: "full" },
-        { id: "funding", name: "Partially Funded", value: "partial" },
+        { id: "isFullyFunded", name: "Fully Funded", value: 'true' },
+        { id: "isFullyFunded", name: "Partially Funded", value: 'false' },
     ]
 
     return (
-        <form className={`md:col-span-1 flex flex-col ${className}`} onSubmit={onSubmit}>
+        <form className={`md:col-span-1 flex flex-col ${className}`} onSubmit={handleSubmit}>
             <h5 className="text-3xl text-primary font-bold py-3">Filter</h5>
             <section className="flex flex-col gap-4">
                 <div className="border-t border-t-primary flex flex-col pt-4">
@@ -83,7 +94,7 @@ export default function FilterMenu({ className, onSubmit }) {
                 <div className="border-t border-t-primary flex flex-col gap-2 pt-4">
                     <p className="text-primary font-bold">Negara</p>
                     <SearchInput
-                        id="country"
+                        id="countries"
                         onChange={handleChange}
                         placeholder="e.g Jepang"
                         secondary

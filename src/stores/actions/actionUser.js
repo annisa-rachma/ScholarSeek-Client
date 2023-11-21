@@ -6,14 +6,13 @@ export function handleLogin(payload) {
         const res = await fetch(BASE_URL + "/login", {
           method: "post",
           body: JSON.stringify(payload),
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: {"Content-Type": "application/json"},
         });
         const data = await res.json();
         if (!res.ok) {
           throw data;
         }
+
         // console.log(data)
         // localStorage.setItem('data', JSON.stringify(data));
         localStorage.setItem("access_token", data.access_token);

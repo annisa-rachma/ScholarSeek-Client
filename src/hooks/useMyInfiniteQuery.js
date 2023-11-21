@@ -2,6 +2,7 @@ import { useInfiniteQuery } from "@tanstack/react-query"
 import { useLocation } from "react-router-dom"
 
 export default function useMyInfiniteQuery({ url, limit }) {
+    console.log(url)
     const { search } = useLocation()
     async function fetchData({ pageParam = 0 }) {
         try {
@@ -22,8 +23,8 @@ export default function useMyInfiniteQuery({ url, limit }) {
         }
     }
 
-    const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-        queryKey: [search],
+    const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
+        queryKey: ["scholarships", {search}],
         queryFn: fetchData,
         getNextPageParam: (lastPage) => {
             if (lastPage.prevOffSet + limit > lastPage.totalData) return null
@@ -38,5 +39,5 @@ export default function useMyInfiniteQuery({ url, limit }) {
         }
     }, [])
 
-    return { datas, fetchNextPage, hasNextPage }
+    return { datas, fetchNextPage, hasNextPage, isLoading}
 }

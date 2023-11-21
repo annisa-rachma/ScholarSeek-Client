@@ -3,17 +3,45 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi"
 import { CgClose } from "react-icons/cg"
 import NavbarMobileMenu from "./NavbarMobileMenu"
 import NavbarProfile from "./NavbarProfile"
+import { useState } from "react"
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { useMemo } from "react"
 
 export default function Navbar({ toggleNav, closeNav, isOpen }) {
-    const links = [
-        { to: "/", name: "Home" },
-        { to: "/scholarships", name: "Scholarships" },
-        { to: "/about", name: "About" },
-        { to: "/mentoring", name: "Mentoring" },
-        { to: "/mentoring/room/ceritanya-ini-room-id", name: "Mentor Room" },
-        { to: "/join-room", name: "Join" },
-        { to: "/forum", name: "Forum" },
-    ]
+    const user = useSelector((state) => state.user)
+
+    const publicLinks = useMemo(
+        () => [
+            { to: "/", name: "Home" },
+            { to: "/scholarships", name: "Scholarships" },
+            // { to: "/about", name: "About" },
+        ],
+        []
+    )
+
+    const privateLinks = useMemo(
+        () => [
+            { to: "/mentoring", name: "Mentoring" },
+            {
+                to: "/mentoring/room/ceritanya-ini-room-id",
+                name: "Mentor Room",
+            },
+            { to: "/join-room", name: "Join" },
+            { to: "/forum", name: "Forum" },
+        ],
+        []
+    )
+
+    const [links, setLinks] = useState(publicLinks)
+
+    useEffect(() => {
+        if (localStorage.getItem("access_token")) {
+            setLinks((prev) => [...prev, ...privateLinks])
+        } else {
+            setLinks(publicLinks)
+        }
+    }, [user, privateLinks, publicLinks])
 
     return (
         <>
@@ -42,8 +70,11 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
                                 {link.name}
                             </NavLink>
                         ))}
-                        {localStorage.access_token ? <NavbarProfile isLoggedIn  /> : <NavbarProfile  />}
-                        
+                        {localStorage.access_token ? (
+                            <NavbarProfile isLoggedIn />
+                        ) : (
+                            <NavbarProfile />
+                        )}
                     </div>
                 </div>
             </nav>

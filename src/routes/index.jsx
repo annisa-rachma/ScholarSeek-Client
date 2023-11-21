@@ -20,20 +20,20 @@ import RegisterPage from "../pages/Register"
 
 export const router = createBrowserRouter([
     {
+        path: "/log-in",
+        element: <LoginPage />,
+    },
+    {
+        path: "/register",
+        element: <RegisterPage />,
+    },
+    {
         path: "/",
         element: <RootLayout />,
         children: [
             {
                 path: "/",
                 element: <Home />,
-            },
-            {
-                path: "/log-in",
-                element: <LoginPage />,
-            },
-            {
-                path: "/register",
-                element: <RegisterPage />,
             },
             {
                 path: "/about",

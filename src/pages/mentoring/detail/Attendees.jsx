@@ -6,7 +6,7 @@ export default function Attendees({ attendees, totalAttendees }) {
             <div
                 style={{
                     height: `${IMAGE_WIDTH}px`,
-                    width: `${attendees?.length * (IMAGE_WIDTH * 0.75)}px`,
+                    width: `${attendees?.length * (IMAGE_WIDTH * 0.9)}px`,
                 }}
                 className={`relative`}
             >

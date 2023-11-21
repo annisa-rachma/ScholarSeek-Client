@@ -30,6 +30,7 @@ export default function ScholarshipsPage() {
             .map((key) => `${key}=${formEntriesObj[key]}`)
             .join("&")
 
+            console.log(queryString)
         navigate(`/scholarships?${queryString}`)
     }
 
@@ -54,7 +55,7 @@ export default function ScholarshipsPage() {
                     </div>
                     <MyInfiniteScroll {...infiniteQuery}>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {infiniteQuery.datas &&
+                            {infiniteQuery?.datas?.length &&
                                 infiniteQuery.datas?.map((data, i) => (
                                     <ScholarshipCard key={i} {...data} />
                                 ))}

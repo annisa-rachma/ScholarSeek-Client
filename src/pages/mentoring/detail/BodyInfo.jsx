@@ -9,10 +9,11 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 
-export default function BodyInfo({ image, desc, user, topics, className, totalAttendees, atendees }) {
+export default function BodyInfo({ image, desc, user, topics, className, totalAttendees, atendees, atendeesImage }) {
     const { slug } = useParams();
     const dispatch = useDispatch();
     const [isJoin, setIsJoin] = useState(false)
+
 
     const addBookMark = async () => {
         // console.log('masuk')
@@ -43,6 +44,11 @@ export default function BodyInfo({ image, desc, user, topics, className, totalAt
           });
       }
     }
+
+    console.log(atendees)
+    console.log(localStorage.id)
+    console.log(atendees?.includes(localStorage.id))
+
     return (
         <article
             className={`grid grid-cols-1  lg:grid-cols-3 gap-4 md:gap-8 ${className}`}
@@ -61,14 +67,14 @@ export default function BodyInfo({ image, desc, user, topics, className, totalAt
             </div>
             <div className="flex flex-col gap-4 md:gap-6">
                 {!isJoin && <Button onClick={addBookMark} className="bg-primary text-white">Gabung</Button>}
-                {isJoin && 
-                <Link to={'/mentoring/room/ceritanya-ini-room-id'} className="w-[100%]">
+                {(isJoin) && 
+                <Link to={`/mentoring/room/${slug}`} className="w-[100%]">
                 <Button className="bg-primary text-white">
                     Masuk ke room</Button></Link>}
 
                 <Attendees 
                     totalAttendees={totalAttendees}
-                    attendees={atendees}
+                    attendees={atendeesImage}
                 />
                 <div className="flex flex-col gap-2">
                     <p className="font-extrabold text-primary">Pembicara</p>

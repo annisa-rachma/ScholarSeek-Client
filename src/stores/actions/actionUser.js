@@ -21,6 +21,7 @@ export function handleLogin(payload) {
         localStorage.setItem("role", data.role);
         localStorage.setItem("profileImg", data.profileImg);
         localStorage.setItem("slug", data.slug)
+        localStorage.setItem("id", data.id)
       } catch (error) {
         throw error;
       }

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBookmarkMentoring } from "../../stores/actions/actionBookmark";
 import Loading from "../../components/Loading";
 import { fetchUserDetail } from "../../stores/actions/actionUser";
+import Button from "../../components/Button";
 
 export default function BookmarkMentoring() {
   const [loading, setLoading] = useState(false);
@@ -61,6 +62,12 @@ export default function BookmarkMentoring() {
         <div className="relative mt-[350px] flex-[1] ">
           <ProfileNav />
 
+            {localStorage.role == "awardee" && 
+            <div className="flex justify-end mt-8">
+              <Button className={"bg-primary text-white hover:bg-[#2e4cc5]"} >Add new session</Button>
+            </div>
+            
+            }
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
             {loading && <Loading className="flex-[1]" />}
             {!loading &&

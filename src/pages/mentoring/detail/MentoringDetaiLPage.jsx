@@ -66,6 +66,8 @@ export default function MentoringDetailPage() {
         topics={mentoringDetail?.topics}
         totalAttendees={mentoringDetail?.totalAtendees}
         atendees={mentoringDetail?.atendees}
+        atendeesImage={mentoringDetail?.atendeesImage}
+        slug={mentoringDetail?.slug}
       />
     </PageContainer>
   );

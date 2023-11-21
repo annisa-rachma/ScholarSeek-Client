@@ -1,15 +1,17 @@
-import { useInfiniteQuery } from '@tanstack/react-query'
-import { useLocation } from 'react-router-dom'
+import { useInfiniteQuery } from "@tanstack/react-query"
+import { useLocation } from "react-router-dom"
 
-export default function useMyInfiniteQuery({url, limit}) {
-    const {search} = useLocation()
+export default function useMyInfiniteQuery({ url, limit }) {
+    const { search } = useLocation()
     async function fetchData({ pageParam = 0 }) {
         try {
             const res = await fetch(
                 `${url}?limit=${limit}&offset=${pageParam}&${
-                    search ? `${search.slice(1)}` : "?"}`, {
+                    search ? `${search.slice(1)}` : "?"
+                }`,
+                {
                     headers: {
-                        access_token: localStorage.access_token,
+                        access_token: localStorage.getItem("access_token"),
                     },
                 }
             )
@@ -21,19 +23,20 @@ export default function useMyInfiniteQuery({url, limit}) {
     }
 
     const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-        queryKey: [search || "data"],
+        queryKey: [search],
         queryFn: fetchData,
         getNextPageParam: (lastPage) => {
-            if (lastPage.prevOffSet + limit > lastPage.totalData)
-                return null
+            if (lastPage.prevOffSet + limit > lastPage.totalData) return null
             return lastPage.prevOffSet + limit
         },
     })
     const datas = data?.pages.reduce((arr, current) => {
-        if(current) {
+        if (current) {
             return [...arr, ...current.datas]
-        } else {return [...arr]}
+        } else {
+            return [...arr]
+        }
     }, [])
 
-    return {datas, fetchNextPage, hasNextPage}
+    return { datas, fetchNextPage, hasNextPage }
 }

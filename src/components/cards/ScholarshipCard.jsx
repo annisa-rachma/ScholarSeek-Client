@@ -22,7 +22,6 @@ export default function ScholarshipCard({
     }
 
     const formattedDegrees = getFormattedList(degrees)
-    console.log(formattedDegrees)
     return (
         <Link
             to={`/scholarships/${slug}`}
@@ -33,7 +32,7 @@ export default function ScholarshipCard({
                 <h2 className="font-extrabold text-base md:text-lg ellipsis-3">
                     {name}
                 </h2>
-                <section className="flex bg-red-500 flex-[1] flex-wrap gap-2 items-center">
+                <section className="flex flex-[1] flex-wrap gap-2 items-center">
                     {countries?.map((country, i) => (
                         <CountryBubble
                         key={i}

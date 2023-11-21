@@ -9,8 +9,8 @@ import { VscComment } from 'react-icons/vsc'
 export default function DiscussionCard({
    title,
    slug,
-   desc,
-   user,
+   content,
+   User,
    createdAt,
    likes,
    dislikes,
@@ -31,16 +31,16 @@ export default function DiscussionCard({
       <div className="border border-primary relative rounded-xl py-4 px-6 flex flex-col gap-3">
          <Link to={slug} className="absolute left-0 top-0 w-full h-full"></Link>
          <MiniProfile
-            title={user.username}
+            title={User?.firstName}
             desc={createdAt}
-            image={user.profilePicture}
+            image={User?.profileImg}
          />
          <div className="flex flex-col gap-1">
             <h1 className="font-extrabold text-primary text-xl ellipsis-3">
                {title}
             </h1>
             <p className="text-slate-500 text-[12px] md:text-sm ellipsis-4">
-               {desc}
+               {content}
             </p>
          </div>
          <div className="border border-b-primary" />

@@ -50,6 +50,10 @@ export default function BookmarkMentoring() {
     fetchDataUser();
   }, []);
 
+  const addMentoringSession = async () => {
+    
+  }
+
   return (
     <>
       <PageContainer className={`mb-12`}>
@@ -64,7 +68,7 @@ export default function BookmarkMentoring() {
 
             {localStorage.role == "awardee" && 
             <div className="flex justify-end mt-8">
-              <Button className={"bg-primary text-white hover:bg-[#2e4cc5]"} >Add new session</Button>
+              <Button onClick={addMentoringSession} className={"bg-primary text-white hover:bg-[#2e4cc5]"} >Add new session</Button>
             </div>
             
             }

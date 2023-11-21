@@ -82,7 +82,7 @@ export default function BodyInfo({
       </div>
       <div className="flex flex-col gap-4 md:gap-6">
         {/* kalau belum join mentoring, dan mau join*/}
-        {!atendees?.includes(Number(localStorage.id)) && (
+        {(!atendees?.includes(Number(localStorage.id)) && atendees?.length < quota) && (
           <Button onClick={addBookMark} className="bg-primary text-white">
             Daftar Sesi
           </Button>
@@ -103,11 +103,11 @@ export default function BodyInfo({
         )}
 
         {/*kuota penuh*/}
-        {(atendees?.length > quota  ) && (
+        {(atendees?.length == quota && localStorage.id != CreatorId ) && (
             <Button className="bg-slate-600 text-white">fully booked</Button>
         )}
 
-        <Attendees totalAttendees={totalAttendees} attendees={atendeesImage} />
+        <Attendees totalAttendees={totalAttendees} attendees={atendeesImage} quota={quota} />
         <div className="flex flex-col gap-2">
           <p className="font-extrabold text-primary">Pembicara</p>
           <MiniProfile

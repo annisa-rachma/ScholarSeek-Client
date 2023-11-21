@@ -8,7 +8,7 @@ import { handleLogin } from "../stores/actions/actionUser";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [input, setInput] = useState({
@@ -63,7 +63,7 @@ export default function LoginPage() {
             className="text-2xl md:text-3xl lg:text-4xl text-primary font-bold md:flex flex-col"
             style={{ textWrap: "balance" }}
           >
-            Selamat datang kembali!
+            Register
           </h1>
           <form onSubmit={handleSubmit}
             action=""
@@ -95,7 +95,7 @@ export default function LoginPage() {
             >
               Login
             </Button>
-            <div className="text-slate-500 text-center mt-8">Belum punya akun? <Link to={'/register'} className={"text-primary hover:text-[#2948c4] "} >Ayo daftar!</Link></div>
+            <div className="text-slate-500 text-center mt-8">Sudah punya akun? <Link to={'/log-in'} className={"text-primary hover:text-[#2948c4] "} >Login</Link></div>
           </form>
         </div>
         <div className="absolute bg-secondary rounded-2xl max-md:bottom-0 md:bottom-[50%] translate-y-[50%] max-md:left-[50%] translate-x-[-50%] w-[76vw] max-w-[460px] md:w-[50vw] md:max-w-[550px] md:right-0 md:translate-x-[70%] ">

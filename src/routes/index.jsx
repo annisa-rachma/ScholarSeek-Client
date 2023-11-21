@@ -16,6 +16,7 @@ import ProfilePage from "../pages/profile/ProfilePage"
 import BookmarkScholarship from "../pages/profile/BookmarkScholarship"
 import BookmarkForum from "../pages/profile/BookmarkForum"
 import BookmarkMentoring from "../pages/profile/BookmarkMentoring"
+import RegisterPage from "../pages/Register"
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
             {
                 path: "/log-in",
                 element: <LoginPage />,
+            },
+            {
+                path: "/register",
+                element: <RegisterPage />,
             },
             {
                 path: "/about",

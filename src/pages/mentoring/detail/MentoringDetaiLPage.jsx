@@ -69,6 +69,8 @@ export default function MentoringDetailPage() {
         atendeesImage={mentoringDetail?.atendeesImage}
         slug={mentoringDetail?.slug}
         date={mentoringDetail?.date}
+        CreatorId={mentoringDetail?.CreatorId}
+        mentoringStatus={mentoringDetail?.mentoringStatus}
       />
     </PageContainer>
   );

@@ -8,11 +8,7 @@ import Attendees from "./Attendees";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-function formatDate(inputDate) {
-    const date = new Date(inputDate);
-    const options = { day: 'numeric', month: 'long', year: 'numeric' };
-    return date.toLocaleDateString('id-ID', options);
-}
+
 export default function BodyInfo({
   image,
   desc,
@@ -21,17 +17,22 @@ export default function BodyInfo({
   className,
   totalAttendees,
   atendees,
-  atendeesImage, date
+  atendeesImage,
+  CreatorId,
+  mentoringStatus,
+   date
 }) {
   const { slug } = useParams();
   const dispatch = useDispatch();
-  const [isJoin, setIsJoin] = useState(false);
+  // const 
+  const startRoom = async () => {
+
+  }
 
   const addBookMark = async () => {
     // console.log('masuk')
     try {
       await dispatch(handleAddMentoringBookmark(slug));
-      setIsJoin(true);
       toast.info("success joining mentoring session", {
         position: "top-right",
         autoClose: 2000,
@@ -57,9 +58,6 @@ export default function BodyInfo({
     }
   };
 
-//   console.log(date)
-//   console.log(formatDate(new Date()))
-//   console.log(date < new Date())
   return (
     <article
       className={`grid grid-cols-1  lg:grid-cols-3 gap-4 md:gap-8 ${className}`}
@@ -77,20 +75,20 @@ export default function BodyInfo({
         </p>
       </div>
       <div className="flex flex-col gap-4 md:gap-6">
+        {/* kalau belum join mentoring, dan mau join*/}
         {!atendees?.includes(Number(localStorage.id)) && (
           <Button onClick={addBookMark} className="bg-primary text-white">
             Gabung
           </Button>
         )}
-        {(atendees?.includes(Number(localStorage.id)) && date < new Date()) && (
-          <Link to={`/mentoring/room/${slug}`} className="w-[100%]">
-            <Button className="bg-primary text-white">Upcoming</Button>
-          </Link>
+        {/* kalau sudah join mentoring, dan mentoring belum dimulai*/}
+        {(atendees?.includes(Number(localStorage.id)) && localStorage.id != CreatorId ) && (
+            <Button className="bg-slate-600 text-white">Upcoming</Button>
         )}
-        {atendees?.includes(Number(localStorage.id)) && (
-          <Link to={`/mentoring/room/${slug}`} className="w-[100%]">
-            <Button className="bg-primary text-white">Masuk ke room</Button>
-          </Link>
+
+        {/* bagi mentor/pembuat sesi mentoring kalau mau mulai sesi*/}
+        {(localStorage.id == CreatorId && localStorage.role == 'awardee'  ) && (
+            <Button onClick={startRoom}  className="bg-primary hover:bg-[#2a47bb] text-white">start room</Button>
         )}
 
         <Attendees totalAttendees={totalAttendees} attendees={atendeesImage} />

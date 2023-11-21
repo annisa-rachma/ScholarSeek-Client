@@ -8,7 +8,11 @@ import Attendees from "./Attendees";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
-
+function formatDate(inputDate) {
+    const date = new Date(inputDate);
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    return date.toLocaleDateString('id-ID', options);
+}
 export default function BodyInfo({
   image,
   desc,
@@ -17,7 +21,7 @@ export default function BodyInfo({
   className,
   totalAttendees,
   atendees,
-  atendeesImage,
+  atendeesImage, date
 }) {
   const { slug } = useParams();
   const dispatch = useDispatch();
@@ -53,12 +57,9 @@ export default function BodyInfo({
     }
   };
 
-  useEffect(() => {
-    // console.log(typeof atendees[0])
-    console.log(typeof localStorage.id);
-    console.log(atendees?.includes(Number(localStorage.id)));
-  }, [atendees, localStorage.id]);
-
+//   console.log(date)
+//   console.log(formatDate(new Date()))
+//   console.log(date < new Date())
   return (
     <article
       className={`grid grid-cols-1  lg:grid-cols-3 gap-4 md:gap-8 ${className}`}
@@ -80,6 +81,11 @@ export default function BodyInfo({
           <Button onClick={addBookMark} className="bg-primary text-white">
             Gabung
           </Button>
+        )}
+        {(atendees?.includes(Number(localStorage.id)) && date < new Date()) && (
+          <Link to={`/mentoring/room/${slug}`} className="w-[100%]">
+            <Button className="bg-primary text-white">Upcoming</Button>
+          </Link>
         )}
         {atendees?.includes(Number(localStorage.id)) && (
           <Link to={`/mentoring/room/${slug}`} className="w-[100%]">

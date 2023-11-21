@@ -25,7 +25,7 @@ export default function NavbarProfile({ isLoggedIn, forMobile }) {
                 Login
             </Link>
             <Link
-                to="/sign-up"
+                to="/register"
                 className={`bg-primary text-white hover:bg-[#2b4bc9] px-6 py-2 rounded-md ${forMobile ? 'text-end max-w-max': 'text-center'} `}
             >
                 Sign Up

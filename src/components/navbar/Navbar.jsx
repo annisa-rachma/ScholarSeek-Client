@@ -37,7 +37,9 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
 
     useEffect(() => {
         if (localStorage.getItem("access_token")) {
-            setLinks((prev) => [...prev, ...privateLinks])
+            if (!links.includes({ to: "/mentoring", name: "Mentoring" })) {
+                setLinks((prev) => [...prev, ...privateLinks])
+            }
         } else {
             setLinks(publicLinks)
         }

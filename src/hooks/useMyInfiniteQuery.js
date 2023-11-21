@@ -2,7 +2,6 @@ import { useInfiniteQuery } from "@tanstack/react-query"
 import { useLocation } from "react-router-dom"
 
 export default function useMyInfiniteQuery({ url, limit }) {
-    console.log(url)
     const { search } = useLocation()
     async function fetchData({ pageParam = 0 }) {
         try {

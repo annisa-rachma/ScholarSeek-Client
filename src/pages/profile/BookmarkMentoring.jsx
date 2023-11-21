@@ -8,6 +8,7 @@ import { fetchBookmarkMentoring } from "../../stores/actions/actionBookmark";
 import Loading from "../../components/Loading";
 import { fetchUserDetail } from "../../stores/actions/actionUser";
 import Button from "../../components/Button";
+import AddMentoringPopup from "../../components/AddMentoringPopup";
 
 export default function BookmarkMentoring() {
   const [loading, setLoading] = useState(false);
@@ -50,9 +51,8 @@ export default function BookmarkMentoring() {
     fetchDataUser();
   }, []);
 
-  const addMentoringSession = async () => {
-    
-  }
+  const [showAddMentoring, setShowAddMentoring] = useState(false)
+  const handleOnClose = () => setShowAddMentoring(false)
 
   return (
     <>
@@ -68,7 +68,7 @@ export default function BookmarkMentoring() {
 
             {localStorage.role == "awardee" && 
             <div className="flex justify-end mt-8">
-              <Button onClick={addMentoringSession} className={"bg-primary text-white hover:bg-[#2e4cc5]"} >Add new session</Button>
+              <Button  onClick={() => {setShowAddMentoring(true)}}className={"bg-primary text-white hover:bg-[#2e4cc5]"} >Add new session</Button>
             </div>
             
             }
@@ -80,6 +80,8 @@ export default function BookmarkMentoring() {
               ))}
           </div>
         </div>
+        <AddMentoringPopup onClose={handleOnClose} visible={showAddMentoring}/>
+
       </PageContainer>
     </>
   );

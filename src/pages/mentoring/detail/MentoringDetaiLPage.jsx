@@ -71,6 +71,7 @@ export default function MentoringDetailPage() {
         date={mentoringDetail?.date}
         CreatorId={mentoringDetail?.CreatorId}
         mentoringStatus={mentoringDetail?.mentoringStatus}
+        quota={mentoringDetail?.quota}
       />
     </PageContainer>
   );

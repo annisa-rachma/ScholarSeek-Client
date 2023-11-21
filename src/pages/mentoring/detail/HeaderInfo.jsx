@@ -1,10 +1,10 @@
 import { CgCalendarDates } from "react-icons/cg"
 
-export default function HeaderInfo({ date, time }) {
+export default function HeaderInfo({ date, time, title }) {
     return (
         <article className="flex flex-col gap-3 md:gap-3 text-primary leading-none max-w-[80%]">
             <h1 className="font-extrabold  md:text-2xl">
-                Cari Tahu Lebih Lanjut Tentang IISMA Scholarship
+                {title}
             </h1>
             <div className="flex items-center gap-1 md:gap-3">
                 <CgCalendarDates className="text-xl md:text-4xl"/>

@@ -12,6 +12,10 @@ import LoginPage from "../pages/Login"
 import MentoringRoomPage from "../pages/mentoring/room/MentoringRoomPage"
 import TEST_MentoringRoom from "../pages/mentoring/room/TEST_MentoringRoom"
 import TEST_ChannelForm from "../pages/mentoring/room/TEST_ChannelForm"
+import ProfilePage from "../pages/profile/ProfilePage"
+import BookmarkScholarship from "../pages/profile/BookmarkScholarship"
+import BookmarkForum from "../pages/profile/BookmarkForum"
+import BookmarkMentoring from "../pages/profile/BookmarkMentoring"
 
 export const router = createBrowserRouter([
     {
@@ -66,6 +70,22 @@ export const router = createBrowserRouter([
             {
                 path: '/forum/:slug',
                 element: <ForumDetailPage/>
+            },
+            {
+                path: '/profile/:slug',
+                element: <ProfilePage/>
+            },
+            {
+                path : '/bookmarks/scholarships',
+                element : <BookmarkScholarship/>
+            },
+            {
+                path : '/bookmarks/forum',
+                element : <BookmarkForum/>
+            },
+            {
+                path : '/bookmarks/mentoring',
+                element : <BookmarkMentoring/>
             }
         ],
     },

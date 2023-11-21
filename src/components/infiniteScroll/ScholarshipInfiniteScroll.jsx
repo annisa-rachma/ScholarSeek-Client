@@ -31,7 +31,7 @@ export default function ScrollarShipInfiniteScroll({
   }
 
   const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: [location.search || "data"],
+    queryKey: [location.search || "data2"],
     queryFn: fetchData,
     getNextPageParam: (lastPage) => {
       if (lastPage.prevOffSet + limit > lastPage.totalScholarships) return null;
@@ -39,12 +39,15 @@ export default function ScrollarShipInfiniteScroll({
     },
   });
   const scholarships = data?.pages.reduce((arr, current) => {
-    return [...arr, ...current.scholarships];
+    if(current) {
+      
+      return [...arr, ...current?.scholarships];
+    } else {return [...arr]}
   }, []);
 
   return (
     <>
-      {!scholarships ? (
+      {scholarships?.length === 0 ? (
         <Loading className="flex-[1]" />
       ) : (
         <InfiniteScroll
@@ -56,7 +59,7 @@ export default function ScrollarShipInfiniteScroll({
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {scholarships &&
-              scholarships.map((scholarship, i) => (
+              scholarships?.map((scholarship, i) => (
                 <ScholarshipCard
                   key={i}
                   {...scholarship}

@@ -20,8 +20,32 @@ export function handleLogin(payload) {
         localStorage.setItem("name", data.name);
         localStorage.setItem("role", data.role);
         localStorage.setItem("profileImg", data.profileImg);
+        localStorage.setItem("slug", data.slug)
+        localStorage.setItem("id", data.id)
       } catch (error) {
         throw error;
       }
     };
+  }
+
+  export function fetchUserDetail(slug) {
+    return async function(dispatch) {
+        try {
+            const res = await fetch(`${BASE_URL}/profile/${slug}`, {
+              headers: {
+                access_token: localStorage.access_token,
+            },
+            });
+            const data = await res.json();
+            if (!res.ok) {
+              throw data;
+            }
+            dispatch({
+                type : 'fetch/getProfileDetail',
+                payload : data
+            })
+          } catch (error) {
+            throw error;
+          }
+    }
   }

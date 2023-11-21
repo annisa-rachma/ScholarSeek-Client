@@ -5,20 +5,34 @@ import BookmarkButton from "../../../components/buttons/BookmarkButton";
 import InfoTable from "../../../components/InfoTable";
 import Loading from "../../../components/Loading";
 import PageContainer from "../../../components/PageContainer";
+import { handleAddScholarshipBookmark } from "../../../stores/actions/actionBookmark";
 import { fetchScholarshipDetail } from "../../../stores/actions/actionScholarships";
 import HeaderInfo from "./HeaderInfo";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ScholarshipDetailPage() {
-  function addBookMark() {
-    alert("Scholarship bookmarked!");
-  }
-
+  
   const [loading, setLoading] = useState(false);
   const { slug } = useParams();
   const scholarship = useSelector((state) => {
     return state.scholarshipsReducer.scholarshipDetail;
   });
   const dispatch = useDispatch();
+  
+  const addBookMark = () => {
+    dispatch(handleAddScholarshipBookmark(slug))
+    toast.info("success added to bookmark", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
 
   const fetchData = async () => {
     try {

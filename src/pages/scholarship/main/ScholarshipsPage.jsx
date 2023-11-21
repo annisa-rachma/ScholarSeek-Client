@@ -28,7 +28,7 @@ export default function ScholarshipsPage() {
             .map((key) => `${key}=${formEntriesObj[key]}`)
             .join('&');
 
-        console.log(`/scholarships?${queryString}`)
+        // console.log(`/scholarships?${queryString}`)
         navigate(
             `/scholarships?${queryString}`
         );

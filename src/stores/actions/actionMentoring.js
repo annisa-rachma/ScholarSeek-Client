@@ -76,3 +76,24 @@ export function handleAddMentoringBookmark(slug) {
     }
   };
 }
+
+export function handleEditStatusMentoring(slug) {
+  return async function (dispatch) {
+    try {
+      const res = await fetch(`${BASE_URL}/mentoring/${slug}`, {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) throw data;
+      dispatch(fetchMentoringDetail(slug))
+      // console.log("berhasil delete")
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  };
+}

@@ -1,4 +1,4 @@
-export default function Attendees({ attendees, totalAttendees }) {
+export default function Attendees({ attendees, totalAttendees, quota }) {
     const IMAGE_WIDTH = 40
 
     return (
@@ -27,7 +27,7 @@ export default function Attendees({ attendees, totalAttendees }) {
                 ))}
             </div>
             <p className="text-slate-500">
-                {totalAttendees}/20 hadir
+                {totalAttendees}/{quota} hadir
             </p>
         </div>
     )

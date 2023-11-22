@@ -1,6 +1,6 @@
 import { RouterProvider } from "react-router-dom"
 import { router } from "./routes"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useEffect } from "react"
 
 function App() {

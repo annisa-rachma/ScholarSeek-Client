@@ -6,7 +6,7 @@ export default function IconWithNum({ icon, num, className, onClick }) {
                 className={`flex gap-2 items-center ${className}`}
             >
                 {icon}
-                <p className="font-light text-[12px]">{num}</p>
+                <p className="font-light text-[16px]">{num}</p>
             </button>
         )
     }
@@ -14,7 +14,7 @@ export default function IconWithNum({ icon, num, className, onClick }) {
     return (
         <div className={`flex gap-2 items-center ${className}`}>
             {icon}
-            <p className="font-light text-[12px]">{num}</p>
+            <p className="font-light text-[16px]">{num}</p>
         </div>
     )
 }

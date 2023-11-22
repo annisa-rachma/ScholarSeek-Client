@@ -23,7 +23,7 @@ export default function RootLayout() {
             <main
                onClick={closeNav}
                className={`pt-[75px] flex-[1] w-full ${
-                  currentPath.includes('/mentoring/room/')
+                  currentPath.includes('/mentoring/room/') || currentPath.includes('/profile')
                      ? ''
                      : 'max-w-[1300px] mx-auto pb-6'
                } flex flex-col gap-16 md:gap-24 overflow-hidden`}

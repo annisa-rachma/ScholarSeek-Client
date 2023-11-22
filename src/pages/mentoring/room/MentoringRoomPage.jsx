@@ -1,14 +1,24 @@
 import PageContainer from "../../../components/PageContainer"
 import ParticipantsSideBar from "./containers/ParticipantsSideBar"
-import StreamActions from "./containers/StreamActions"
 import participantsMock from "../../../data/participantsMock.json"
 import chatsMock from "../../../data/chatsMock.json"
 import ChatsSideBar from "./containers/ChatsSideBar"
-import StreamsContainer from "./containers/StreamsContainer"
-import StreamBox from "./containers/StreamBox"
+import { useParams } from "react-router"
+import { useState } from "react"
+import { useEffect } from "react"
+import VideoCall from "./new/VideoCall"
 
 export default function MentoringRoomPage() {
     const WINDOW_HEIGHT = 80
+    const { slug } = useParams()
+
+    const [inCall, setInCall] = useState(false)
+    const [channelName, setChannelName] = useState("")
+
+    useEffect(() => {
+        setInCall(true)
+        setChannelName(slug)
+    }, [slug])
 
     return (
         <div style={{ minHeight: `${WINDOW_HEIGHT}vh` }}>
@@ -21,11 +31,12 @@ export default function MentoringRoomPage() {
                     participants={participantsMock}
                     pageHeight={WINDOW_HEIGHT}
                 />
-                <div className="flex-[1] relative z-[1]">
-                    <StreamBox/>
-                    <StreamsContainer/>
-                    <StreamActions />
-                </div>
+                {inCall && (
+                    <VideoCall
+                        setInCall={setInCall}
+                        channelName={channelName}
+                    />
+                )}
                 <ChatsSideBar chats={chatsMock} pageHeight={WINDOW_HEIGHT} />
             </PageContainer>
         </div>

@@ -5,12 +5,14 @@ import forumReducer from "./reducers/forumReducer"
 import mentoringReducer from "./reducers/mentoringReducer"
 import scholarshipsReducer from "./reducers/scholarshipReducer"
 import userReducer from "./reducers/userReducer"
+import userReducerr from "./reducers/userReducerr"
 
 const rootReducer = combineReducers({
     scholarshipsReducer : scholarshipsReducer,
     mentoringReducer : mentoringReducer,
     bookmarkReducer : bookmarkReducer,
     userReducer : userReducer,
+    user: userReducerr,
     forumReducer : forumReducer
 })
 

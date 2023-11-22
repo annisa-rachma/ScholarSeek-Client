@@ -10,8 +10,8 @@ import ForumPage from "../pages/forum/main/ForumPage"
 import ForumDetailPage from "../pages/forum/detail/ForumDetailPage"
 import LoginPage from "../pages/Login"
 import MentoringRoomPage from "../pages/mentoring/room/MentoringRoomPage"
-// import TEST_MentoringRoom from "../pages/mentoring/room/TEST_MentoringRoom"
-// import TEST_ChannelForm from "../pages/mentoring/room/TEST_ChannelForm"
+import TEST_MentoringRoom from "../pages/mentoring/room/TEST_MentoringRoom"
+import TEST_ChannelForm from "../pages/mentoring/room/TEST_ChannelForm"
 import ProfilePage from "../pages/profile/ProfilePage"
 import BookmarkScholarship from "../pages/profile/BookmarkScholarship"
 import BookmarkForum from "../pages/profile/BookmarkForum"
@@ -22,28 +22,28 @@ import SignupAwardee from "../pages/register/registerAwardee/SignupAwardee"
 
 export const router = createBrowserRouter([
     {
+        path: "/log-in",
+        element: <LoginPage />,
+    },
+    {
+        path: "/register",
+        element: <RegisterPage />,
+    },
+    {
+        path: "/register/mentee",
+        element: <SignupMentee />,
+    },
+    {
+        path: "/register/awardee",
+        element: <SignupAwardee />,
+    },
+    {
         path: "/",
         element: <RootLayout />,
         children: [
             {
                 path: "/",
                 element: <Home />,
-            },
-            {
-                path: "/log-in",
-                element: <LoginPage />,
-            },
-            {
-                path: "/register",
-                element: <RegisterPage />,
-            },
-            {
-                path: "/register/mentee",
-                element: <SignupMentee />,
-            },
-            {
-                path: "/register/awardee",
-                element: <SignupAwardee />,
             },
             {
                 path: "/about",
@@ -61,17 +61,17 @@ export const router = createBrowserRouter([
                 path: '/mentoring',
                 element: <MentoringPage/>
             },
-            // {
-            //     path: '/join-room',
-            //     element: <TEST_ChannelForm/>
-            // },
-            // {
-            //     path: '/mentoring/room/test',
-            //     // element: <MentoringPage/>
-            //     element: <TEST_MentoringRoom/>
-            // },
             {
-                path: '/mentoring/room/:id',
+                path: '/join-room',
+                element: <TEST_ChannelForm/>
+            },
+            {
+                path: '/mentoring/room/test',
+                // element: <MentoringPage/>
+                element: <TEST_MentoringRoom/>
+            },
+            {
+                path: '/mentoring/room/:slug',
                 element: <MentoringRoomPage/>
             },
             {
@@ -91,11 +91,11 @@ export const router = createBrowserRouter([
                 element: <ProfilePage/>
             },
             {
-                path : '/bookmarks/scholarships',
+                path : '/profile/:slug/bookmarks/scholarships',
                 element : <BookmarkScholarship/>
             },
             {
-                path : '/bookmarks/forum',
+                path : '/profile/:slug/bookmarks/forum',
                 element : <BookmarkForum/>
             },
             {

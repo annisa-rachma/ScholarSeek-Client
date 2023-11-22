@@ -5,7 +5,7 @@ export default function TEST_Videos({ users, tracks }) {
         <div>
             <div id="videos">
                 <AgoraVideoPlayer
-                    className="vid"
+                    className="border border-primary"
                     videoTrack={tracks[1]}
                     style={{ height: "500px", width: "500px" }}
                 />

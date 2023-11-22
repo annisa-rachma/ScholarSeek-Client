@@ -9,41 +9,31 @@ import Carousel from "../../components/Carousel"
 // import scholarships from "../../data/scholarships.json"
 import ScholarshipCard from "../../components/cards/ScholarshipCard"
 import Banner from "../../components/Banner"
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchScholarships } from "../../stores/actions/actionScholarships"
 import Loading from "../../components/Loading"
+import { useQuery } from "@tanstack/react-query"
 
 export default function Home() {
-    const [loading, setLoading] = useState(false)
-    const scholarshipsData = useSelector((state) => {
-        return state.scholarshipsReducer.scholarships;
-      });
-    const dispatch = useDispatch()
-
-    const fetchData = async () => {
+    async function fetchScholarships() {
         try {
-            setLoading(true)
-            await dispatch(fetchScholarships());
-          } catch (error) {
-            console.log(error);
-          } 
-          finally {
-            setLoading(false)
-          }
+            const res = await fetch(
+                import.meta.env.VITE_BASE_URL + "/scholarships"
+            )
+            const data = await res.json()
+            if (!res.ok) throw data.message
+            return data
+        } catch (err) {
+            console.log(err)
+        }
     }
 
-    useEffect(() => {
-        fetchData()
-    }, [])
-    // console.log(scholarshipsData)
-
-    let scholarships = scholarshipsData.scholarships
-
-    // console.log(scholarshipsData)
-    // if (loading) {
-    //     return <Loading className="flex-[1]" />; // You can replace this with a loading spinner or any other loading indicator
-    //   }
+    const {
+        data: scholarships,
+        isLoading,
+        isError,
+    } = useQuery({
+        queryFn: fetchScholarships,
+        queryKey: ["scholarships"],
+    })
 
     return (
         <>
@@ -55,18 +45,20 @@ export default function Home() {
                 desc="Telusuri informasi beasiswa terbaru dari seluruh dunia. Dapatkan berbagai jenis beasiswa, baik sebagian maupun sepenuhnya, di dalam maupun di luar negeri!"
             />
             <div className="flex flex-col">
-                {loading && <Loading className="flex-[1]" />}
-                {!loading && <Carousel>
-                    {scholarships?.map((scholarship, i) => (
-                        <ScholarshipCard
-                            // slug={"ini-pura-puranya-slug-scholarship"}
-                            key={i}
-                            {...scholarship}
-                            className="mx-2"
-                        />
-                    ))}
-                </Carousel>}
-                
+                {isLoading ? (
+                    <Loading className="flex-[1]" />
+                ) : (
+                    <Carousel>
+                        {scholarships?.datas.map((scholarship, i) => (
+                            <ScholarshipCard
+                                key={i}
+                                {...scholarship}
+                                className="mx-2"
+                            />
+                        ))}
+                    </Carousel>
+                )}
+                {isError && <p>an error occured!</p>}
                 <Button
                     type="link"
                     to="scholarships"

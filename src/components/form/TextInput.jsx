@@ -1,7 +1,8 @@
-export default function TextInput({ id, placeholder, className, onChange }) {
+export default function TextInput({ id, placeholder, className, onChange, type='text', value }) {
     return (
         <input
-            type="text"
+            type={type}
+            value={value}
             size={1}
             onChange={onChange}
             className={`py-2 px-4 rounded-lg ${className}`}

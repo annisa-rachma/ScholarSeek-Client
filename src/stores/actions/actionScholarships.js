@@ -1,5 +1,9 @@
 import { BASE_URL } from "../../routes/base_url"
 
+export default class ScholarshipAction {
+    static async 
+}
+
 export function fetchScholarships(params = {}) {
     return async function (dispatch) {
         try {

@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react"
-import TEST_Controls from "./TEST_Controls"
-import TEST_Videos from "./TEST_Videos"
 import { createClient, createMicrophoneAndCameraTracks } from "agora-rtc-react"
+import Controls from "./Controls"
+import Videos from "./Videos"
 
 const config = {
     mode: "rtc",
     codec: "vp8",
 }
-
 const useClient = createClient(config)
 const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks()
 
-export default function TEST_VideoCall({ setInCall, channelName }) {
+export default function VideoCall({ setInCall, channelName }) {
     const [users, setUsers] = useState([])
     const [start, setStart] = useState(false)
     const client = useClient()
@@ -23,7 +22,7 @@ export default function TEST_VideoCall({ setInCall, channelName }) {
             console.log("init", name)
             client.on("user-published", async (user, mediaType) => {
                 await client.subscribe(user, mediaType)
-                console.log("subscribe success")
+                console.log("subscribe success", user)
                 if (mediaType === "video") {
                     setUsers((prevUsers) => {
                         return [...prevUsers, user]
@@ -70,15 +69,17 @@ export default function TEST_VideoCall({ setInCall, channelName }) {
     }, [channelName, client, ready, tracks])
 
     return (
-        <div className="App">
-            {ready && tracks && (
-                <TEST_Controls
-                    tracks={tracks}
-                    setStart={setStart}
-                    setInCall={setInCall}
-                />
-            )}
-            {start && tracks && <TEST_Videos users={users} tracks={tracks} />}
-        </div>
+        <>
+            <div className="flex-[1] flex relative z-[1]">
+                {ready && tracks && (
+                    <Controls
+                        tracks={tracks}
+                        setStart={setStart}
+                        setInCall={setInCall}
+                    />
+                )}
+                {start && tracks && <Videos users={users} tracks={tracks} />}
+            </div>
+        </>
     )
 }

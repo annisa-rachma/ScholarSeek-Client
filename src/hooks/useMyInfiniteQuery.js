@@ -22,8 +22,8 @@ export default function useMyInfiniteQuery({ url, limit }) {
         }
     }
 
-    const { data, fetchNextPage, hasNextPage } = useInfiniteQuery({
-        queryKey: [search],
+    const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
+        queryKey: ["scholarships", {search}],
         queryFn: fetchData,
         getNextPageParam: (lastPage) => {
             if (lastPage.prevOffSet + limit > lastPage.totalData) return null
@@ -38,5 +38,5 @@ export default function useMyInfiniteQuery({ url, limit }) {
         }
     }, [])
 
-    return { datas, fetchNextPage, hasNextPage }
+    return { datas, fetchNextPage, hasNextPage, isLoading}
 }

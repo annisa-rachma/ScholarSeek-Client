@@ -1,4 +1,4 @@
-const initialState = {scholarships : [], scholarshipDetail: null};
+const initialState = []
 
 export default function scholarshipsReducer(state = initialState, action) {
     switch(action.type) {

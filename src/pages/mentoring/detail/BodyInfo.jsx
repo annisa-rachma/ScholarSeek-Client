@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Button from "../../../components/Button";
 import MiniProfile from "../../../components/MiniProfile";
 import TextBubble from "../../../components/textBubble/TextBubble";
-import { handleAddMentoringBookmark } from "../../../stores/actions/actionMentoring";
+import { handleAddMentoringBookmark, handleEditStatusMentoring } from "../../../stores/actions/actionMentoring";
 import Attendees from "./Attendees";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,13 +20,19 @@ export default function BodyInfo({
   atendeesImage,
   CreatorId,
   mentoringStatus,
-   date
+  quota
 }) {
   const { slug } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   // const 
   const startRoom = async () => {
+    await dispatch(handleEditStatusMentoring(slug));
+    navigate(`/mentoring/room/${slug}`)
+  }
 
+  const startMentoring = async () => {
+    navigate(`/mentoring/room/${slug}`)
   }
 
   const addBookMark = async () => {
@@ -76,22 +82,32 @@ export default function BodyInfo({
       </div>
       <div className="flex flex-col gap-4 md:gap-6">
         {/* kalau belum join mentoring, dan mau join*/}
-        {!atendees?.includes(Number(localStorage.id)) && (
+        {(!atendees?.includes(Number(localStorage.id)) && atendees?.length < quota) && (
           <Button onClick={addBookMark} className="bg-primary text-white">
-            Gabung
+            Daftar Sesi
           </Button>
         )}
         {/* kalau sudah join mentoring, dan mentoring belum dimulai*/}
-        {(atendees?.includes(Number(localStorage.id)) && localStorage.id != CreatorId ) && (
+        {(atendees?.includes(Number(localStorage.id)) && localStorage.id != CreatorId && mentoringStatus != 'ongoing'  ) && (
             <Button className="bg-slate-600 text-white">Upcoming</Button>
         )}
 
-        {/* bagi mentor/pembuat sesi mentoring kalau mau mulai sesi*/}
-        {(localStorage.id == CreatorId && localStorage.role == 'awardee'  ) && (
+        {/* bagi mentor untuk memulai sesi*/}
+        {(localStorage.id == CreatorId && localStorage.role == 'awardee' && mentoringStatus != 'ongoing'   ) && (
             <Button onClick={startRoom}  className="bg-primary hover:bg-[#2a47bb] text-white">start room</Button>
         )}
 
-        <Attendees totalAttendees={totalAttendees} attendees={atendeesImage} />
+        {/*bagi peserta saat sesi mulai untuk join ke room*/}
+        {(atendees?.includes(Number(localStorage.id)) && mentoringStatus == 'ongoing' ) && (
+            <Button onClick={startMentoring}  className="bg-primary hover:bg-[#2a47bb] text-white">join session</Button>
+        )}
+
+        {/*kuota penuh*/}
+        {(atendees?.length == quota && localStorage.id != CreatorId ) && (
+            <Button className="bg-slate-600 text-white">fully booked</Button>
+        )}
+
+        <Attendees totalAttendees={totalAttendees} attendees={atendeesImage} quota={quota} />
         <div className="flex flex-col gap-2">
           <p className="font-extrabold text-primary">Pembicara</p>
           <MiniProfile

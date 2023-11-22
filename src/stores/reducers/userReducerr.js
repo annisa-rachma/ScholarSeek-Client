@@ -1,5 +1,11 @@
 const initialState = {
-    name: "",
+    username: "",
+    firstName: "",
+    lastName: "",
+    description: '',
+    email: '',
+    isAwardeeValidate: false,
+    linkedinUrl: '',
     role: "",
     profileImg: "",
     slug: "",

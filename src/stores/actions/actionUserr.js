@@ -1,3 +1,5 @@
+import showToast from "../../utlis/showToast"
+
 export default class UserAction {
     static async login(formObj) {
         try {
@@ -10,17 +12,21 @@ export default class UserAction {
             if (!res.ok) {
                 throw data
             }
+            // sets access_token to locale storage
             localStorage.setItem("access_token", data.access_token)
+            showToast("success", `Welcome ${data.user.username}!`)
+            // sets user store state to be populated with user information
             return (dispatch) => {
-                dispatch({ type: "login", payload: data })
+                dispatch({ type: "login", payload: data.user })
             }
         } catch (err) {
-            throw { err }
+            throw { message: err.message }
         }
     }
 
     static logout() {
         localStorage.removeItem("access_token")
+        showToast("success", `Logout successful!`)
         return { type: "logout" }
     }
 

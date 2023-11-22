@@ -32,12 +32,12 @@ export default function ForumPage() {
                 onSubmit={handleSubmit}
                 placeholder="Cari topik..."
             />
-
+            
             <MyInfiniteScroll {...infiniteQuery}>
                 <div className="flex flex-col gap-6">
                     {infiniteQuery.datas &&
                         infiniteQuery.datas.map((data, i) => (
-                            <DiscussionCard key={i} {...data} />
+                            <DiscussionCard key={i} {...data} refetch={infiniteQuery.refetchData} />
                         ))}
                 </div>
             </MyInfiniteScroll>

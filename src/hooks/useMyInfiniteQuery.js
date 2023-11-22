@@ -1,8 +1,9 @@
-import { useInfiniteQuery } from "@tanstack/react-query"
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query"
 import { useLocation } from "react-router-dom"
 
 export default function useMyInfiniteQuery({ url, limit }) {
     const { search } = useLocation()
+    const queryClient = useQueryClient()
     async function fetchData({ pageParam = 0 }) {
         try {
             const res = await fetch(
@@ -38,5 +39,9 @@ export default function useMyInfiniteQuery({ url, limit }) {
         }
     }, [])
 
-    return { datas, fetchNextPage, hasNextPage, isLoading}
+    const refetchData = () => {
+        queryClient.invalidateQueries({queryKey : ["scholarships", {search}]})
+    }
+
+    return { datas, fetchNextPage, hasNextPage, isLoading, refetchData}
 }

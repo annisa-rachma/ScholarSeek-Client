@@ -43,10 +43,10 @@ export default function AddMentoringPopup({ visible, onClose }) {
           access_token: localStorage.access_token,
         },
       });
-      const data = await res.json();
-      if (!res.ok) {
-        throw data;
-      }
+      // const data = await res.json();
+      // if (!res.ok) {
+      //   throw data;
+      // }
       // console.log(data, '<<<client')
 
       setInput({

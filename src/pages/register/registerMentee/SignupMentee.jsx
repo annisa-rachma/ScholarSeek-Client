@@ -3,20 +3,15 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignupMentee() {
   const navigate = useNavigate()
-  // state = {
-  //   step: 1,
-  //   email: '',
-  //   username: '', 
-  //   password: '',
-  //   description: '',
-  //   school: ''
-  // }
   const [values, setValues] = useState({
     step: 1,
+    firstName: '',
+    lastName: '',
     email: '',
     username: '', 
     password: '',
@@ -25,12 +20,9 @@ export default function SignupMentee() {
   });
   const [file, setFile] = useState()
   
-
-  // go back to previous step
   const prevStep = () => {
     setValues(prevValues => ({ ...prevValues, step: prevValues.step - 1 }));
   }
-  // proceed to the next step
   const nextStep = () => {
     setValues(prevValues => ({ ...prevValues, step: prevValues.step + 1 }));
   }
@@ -48,24 +40,20 @@ export default function SignupMentee() {
       event.preventDefault();
       const formData = new FormData()
       formData.append("image", file)
-      formData.append("input", JSON.stringify(input))
+      formData.append("input", JSON.stringify(values))
 
-      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/mentoring`, formData, {
-        // method: "post",
-        // body: formData,
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/register/mentee`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
-          access_token: localStorage.access_token,
+          // access_token: localStorage.access_token,
         },
       });
-      const data = await res.json();
-      if (!res.ok) {
-        throw data;
-      }
+      // const data = await res.json();
+      // if (!res.ok) {
+      //   throw data;
+      // }
       navigate('/log-in')
-      // setInput({
-      //   title: "",
-      // });
+ 
       toast.success("Please login", {
         position: "top-right",
         autoClose: 2000,
@@ -111,11 +99,12 @@ export default function SignupMentee() {
             values={ values }
             file={file}
             handleFile={handleFile}
+            handleSubmit={handleSubmit}
           />
         )
      
       default: 
-          // do nothing
+        
     }
   
 }

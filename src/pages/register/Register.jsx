@@ -27,7 +27,7 @@ export default function RegisterPage() {
             </div>
             <Link to={"/register/mentee"}>
               <Button className={"bg-primary text-white w-[100%]"}>
-                Masuk sebagai mentee
+                Daftar sebagai mentee
               </Button>
             </Link>
           </div>
@@ -41,7 +41,7 @@ export default function RegisterPage() {
             </div>
             <Link to={"/register/awardee"}>
               <Button className={"bg-primary text-white w-[100%]"}>
-                Masuk sebagai awardee
+                Daftar sebagai awardee
               </Button>
             </Link>
           </div>

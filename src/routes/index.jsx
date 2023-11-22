@@ -16,7 +16,10 @@ import ProfilePage from "../pages/profile/ProfilePage"
 import BookmarkScholarship from "../pages/profile/BookmarkScholarship"
 import BookmarkForum from "../pages/profile/BookmarkForum"
 import BookmarkMentoring from "../pages/profile/BookmarkMentoring"
-import RegisterPage from "../pages/Register"
+import RegisterPage from "../pages/register/Register"
+import RegisterMentee from "../pages/register/registerMentee/Step1"
+import RegisterAwardee from "../pages/register/registerAwardee/RegisterAwardee"
+import SignupMentee from "../pages/register/registerMentee/SignupMentee"
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +37,14 @@ export const router = createBrowserRouter([
             {
                 path: "/register",
                 element: <RegisterPage />,
+            },
+            {
+                path: "/register/mentee",
+                element: <SignupMentee />,
+            },
+            {
+                path: "/register/awardee",
+                element: <RegisterAwardee />,
             },
             {
                 path: "/about",

@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 
 function App() {
-    const user = useSelector(store => store.user)
-    console.log(user)
+    // const user = useSelector(store => store.user)
     const dispatch = useDispatch()
 
     useEffect(() => {

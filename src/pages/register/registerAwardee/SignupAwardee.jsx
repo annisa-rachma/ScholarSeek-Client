@@ -72,7 +72,7 @@ export default function SignupAwardee() {
       );
       //add modal di sini
       toast.dismiss();
-      Swal.fire("please wait a few days for our team to validate your mentor application");
+      Swal.fire("please wait a few days for our team to validate your mentor application, but you could continue login");
       toast.success("Please login", {
         position: "top-right",
         autoClose: 2000,

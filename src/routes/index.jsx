@@ -81,11 +81,11 @@ export const router = createBrowserRouter([
                 element: <ProfilePage/>
             },
             {
-                path : '/bookmarks/scholarships',
+                path : '/profile/:slug/bookmarks/scholarships',
                 element : <BookmarkScholarship/>
             },
             {
-                path : '/bookmarks/forum',
+                path : '/profile/:slug/bookmarks/forum',
                 element : <BookmarkForum/>
             },
             {

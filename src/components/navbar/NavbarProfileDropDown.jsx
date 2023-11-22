@@ -2,21 +2,22 @@ import { Link, useNavigate } from "react-router-dom"
 import { AiOutlineUser } from "react-icons/ai"
 import { HiOutlineBookmark } from "react-icons/hi2"
 import { LuLogOut } from "react-icons/lu"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import UserrAction from "../../stores/actions/actionUserr"
 
 export default function NavbarProfileDropDown({ className }) {
+    const user = useSelector(store => store.user)
     let navigate = useNavigate()
     const dispatch = useDispatch()
 
     const links = [
-        { icon: <AiOutlineUser />, name: "Profile", to: `/profile/${localStorage.slug}` },
+        { icon: <AiOutlineUser />, name: "Profile", to: `/profile/${user.slug}` },
         { icon: <HiOutlineBookmark />, name: "BookMarks", to: "/bookmarks/scholarships" },
     ]
 
     const handleLogout = () => {
         dispatch(UserrAction.logout())
-        localStorage.clear();
+        // localStorage.clear();
         navigate("/");
     }
     return (

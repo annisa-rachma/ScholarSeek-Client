@@ -1,4 +1,3 @@
-
 export default class UserAction {
     static async login(formObj) {
         try {
@@ -11,19 +10,38 @@ export default class UserAction {
             if (!res.ok) {
                 throw data
             }
-            localStorage.setItem("access_token", data.access_token);
-            return (dispatch => {
-                dispatch({type: 'login', payload: data})
-            })
+            localStorage.setItem("access_token", data.access_token)
+            return (dispatch) => {
+                dispatch({ type: "login", payload: data })
+            }
         } catch (err) {
-            throw {err}
+            throw { err }
         }
     }
 
     static logout() {
-        localStorage.removeItem('access_token')
-        return {type: 'logout'}
+        localStorage.removeItem("access_token")
+        return { type: "logout" }
     }
+
+    // static async getUserDetail(slug) {
+    //     try {
+    //         const res = await fetch(
+    //             import.meta.env.VITE_BASE_URL + `/profile/${slug}`,
+    //             {
+    //                 method: "get",
+    //                 headers: {
+    //                     access_token: localStorage.getItem("access_token"),
+    //                     "Content-Type": "application/json",
+    //                 },
+    //             }
+    //         )
+    //         const data = await res.json()
+    //         if (!res.ok) {
+    //             throw data
+    //         }
+    //     } catch (err) {}
+    // }
 }
 // export function handleLoginn(payload) {
 //     return async function (dispatch) {

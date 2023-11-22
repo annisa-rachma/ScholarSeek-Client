@@ -20,14 +20,16 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
         []
     )
 
-    const privateLinks = useMemo(
+    const loggedInLinks = useMemo(
         () => [
+            { to: "/", name: "Home" },
+            { to: "/scholarships", name: "Scholarships" },
             { to: "/mentoring", name: "Mentoring" },
-            {
-                to: "/mentoring/room/ceritanya-ini-room-id",
-                name: "Mentor Room",
-            },
-            { to: "/join-room", name: "Join" },
+            // {
+            //     to: "/mentoring/room/ceritanya-ini-room-id",
+            //     name: "Mentor Room",
+            // },
+            // { to: "/join-room", name: "Join" },
             { to: "/forum", name: "Forum" },
         ],
         []
@@ -37,13 +39,11 @@ export default function Navbar({ toggleNav, closeNav, isOpen }) {
 
     useEffect(() => {
         if (localStorage.getItem("access_token")) {
-            if (!links.includes({ to: "/mentoring", name: "Mentoring" })) {
-                setLinks((prev) => [...prev, ...privateLinks])
-            }
+            setLinks(loggedInLinks)
         } else {
             setLinks(publicLinks)
         }
-    }, [user, privateLinks, publicLinks])
+    }, [user, loggedInLinks, publicLinks, links])
 
     return (
         <>

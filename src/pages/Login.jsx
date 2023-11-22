@@ -30,7 +30,7 @@ export default function LoginPage() {
         try {
             e.preventDefault()
             dispatch(await UserrAction.login(input))
-            toast.info("Signing in, please wait...", {
+            toast.success(`Welcome!`, {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,

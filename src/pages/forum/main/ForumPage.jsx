@@ -19,9 +19,10 @@ export default function ForumPage() {
         e.preventDefault()
         const formEntriesObj = getFormEntries(e)
         console.log(formEntriesObj)
-        navigate(`/scholarships?title=${formEntriesObj.search}`)
+        navigate(`/forum?title=${formEntriesObj.search}`)
     }
 
+    console.log(infiniteQuery.datas)
     return (
         <PageContainer className="flex flex-col gap-6">
             <PageTitle>Forum</PageTitle>

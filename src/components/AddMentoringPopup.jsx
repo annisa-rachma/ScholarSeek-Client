@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { LiaWindowCloseSolid } from "react-icons/lia";
 import Button from "./Button";
 import axios from 'axios'
+import { fetchBookmarkMentoring } from "../stores/actions/actionBookmark";
 
 export default function AddMentoringPopup({ visible, onClose }) {
   const [input, setInput] = useState({
@@ -29,6 +30,18 @@ export default function AddMentoringPopup({ visible, onClose }) {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
+
+      toast.loading("Submitting...", {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      
       const formData = new FormData()
       formData.append("image", file)
       formData.append("input", JSON.stringify(input))
@@ -43,6 +56,8 @@ export default function AddMentoringPopup({ visible, onClose }) {
       setInput({
         title: "",
       });
+      await dispatch(fetchBookmarkMentoring())
+      toast.dismiss();
       toast.success("Successfully added a new mentoring session", {
         position: "top-right",
         autoClose: 2000,

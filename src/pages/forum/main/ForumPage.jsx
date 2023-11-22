@@ -6,6 +6,10 @@ import MyInfiniteScroll from "../../../components/infiniteScroll/MyInfiniteScrol
 import useMyInfiniteQuery from "../../../hooks/useMyInfiniteQuery"
 import getFormEntries from "../../../lib/getFormEntries"
 import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+import Button from "../../../components/Button"
+import AddThreadPopup from "../../../components/AddThreadPopup"
+// import AddMentoringPopup from "../../../components/AddMentoringPopup"
 
 export default function ForumPage() {
     const infiniteQuery = useMyInfiniteQuery({
@@ -21,8 +25,9 @@ export default function ForumPage() {
         console.log(formEntriesObj)
         navigate(`/forum?title=${formEntriesObj.search}`)
     }
-
-    console.log(infiniteQuery.datas)
+    const [showAddThread, setShowAddThread] = useState(false)
+    const handleOnClose = () => setShowAddThread(false)
+    // console.log(infiniteQuery.datas)
     return (
         <PageContainer className="flex flex-col gap-6">
             <PageTitle>Forum</PageTitle>
@@ -32,7 +37,9 @@ export default function ForumPage() {
                 onSubmit={handleSubmit}
                 placeholder="Cari topik..."
             />
-            
+            <div className="flex justify-end">
+              <Button  onClick={() => {setShowAddThread(true)}}className={"bg-primary text-white hover:bg-[#2e4cc5]"} >Add new thread</Button>
+            </div>
             <MyInfiniteScroll {...infiniteQuery}>
                 <div className="flex flex-col gap-6">
                     {infiniteQuery.datas &&
@@ -41,6 +48,8 @@ export default function ForumPage() {
                         ))}
                 </div>
             </MyInfiniteScroll>
+            <AddThreadPopup onClose={handleOnClose} visible={showAddThread} refetch={infiniteQuery.refetchData}/>
+
         </PageContainer>
     )
 }

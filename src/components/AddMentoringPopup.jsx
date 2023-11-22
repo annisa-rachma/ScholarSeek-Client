@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { handleAddCategory } from "../store/actions/actionCategory";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { LiaWindowCloseSolid } from "react-icons/lia";
@@ -27,7 +26,6 @@ export default function AddMentoringPopup({ visible, onClose }) {
     });
   };
 
-  // let input2 = JSON.stringify(input)
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
@@ -36,18 +34,11 @@ export default function AddMentoringPopup({ visible, onClose }) {
       formData.append("input", JSON.stringify(input))
 
       const res = await axios.post(`${import.meta.env.VITE_BASE_URL}/mentoring`, formData, {
-        // method: "post",
-        // body: formData,
         headers: {
           "Content-Type": "multipart/form-data",
           access_token: localStorage.access_token,
         },
       });
-      // const data = await res.json();
-      // if (!res.ok) {
-      //   throw data;
-      // }
-      // console.log(data, '<<<client')
 
       setInput({
         title: "",
@@ -78,7 +69,6 @@ export default function AddMentoringPopup({ visible, onClose }) {
     }
   };
 
-  // console.log(input)
   if (!visible) return null;
 
   return (

@@ -17,9 +17,8 @@ import BookmarkScholarship from "../pages/profile/BookmarkScholarship"
 import BookmarkForum from "../pages/profile/BookmarkForum"
 import BookmarkMentoring from "../pages/profile/BookmarkMentoring"
 import RegisterPage from "../pages/register/Register"
-import RegisterMentee from "../pages/register/registerMentee/Step1"
-import RegisterAwardee from "../pages/register/registerAwardee/RegisterAwardee"
 import SignupMentee from "../pages/register/registerMentee/SignupMentee"
+import SignupAwardee from "../pages/register/registerAwardee/SignupAwardee"
 
 export const router = createBrowserRouter([
     {
@@ -44,7 +43,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/register/awardee",
-                element: <RegisterAwardee />,
+                element: <SignupAwardee />,
             },
             {
                 path: "/about",

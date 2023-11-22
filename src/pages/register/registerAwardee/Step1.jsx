@@ -24,11 +24,11 @@ export default function Step1({ nextStep, handleChange, values }) {
                 className="text-2xl md:text-3xl lg:text-4xl text-primary font-bold md:flex flex-col"
                 style={{ textWrap: "balance" }}
               >
-                Daftar Sebagai Mentee
+                Daftar Sebagai Awardee
               </h1>
-              <p className="text-slate-400 ">Step 1/2</p>
+              <p className="text-slate-400 ">Step 1/3</p>
             </div>
-            
+
             <div className="flex flex-col mt-2">
               <label htmlFor="">First Name</label>
               <input

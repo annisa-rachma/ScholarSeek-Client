@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
+// Step2
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
+import Swal from 'sweetalert2'
 
-export default function SignupMentee() {
+export default function SignupAwardee() {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     step: 1,
@@ -17,6 +20,10 @@ export default function SignupMentee() {
     password: "",
     description: "",
     school: "",
+    linkedinUrl: "",
+    major: "",
+    scholarship: "",
+    year: "",
   });
   const [file, setFile] = useState();
 
@@ -55,7 +62,7 @@ export default function SignupMentee() {
       formData.append("input", JSON.stringify(values));
 
       const res = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/register/mentee`,
+        `${import.meta.env.VITE_BASE_URL}/register/awardee`,
         formData,
         {
           headers: {
@@ -63,8 +70,9 @@ export default function SignupMentee() {
           },
         }
       );
-
+      //add modal di sini
       toast.dismiss();
+      Swal.fire("please wait a few days for our team to validate your mentor application");
       toast.success("Please login", {
         position: "top-right",
         autoClose: 2000,
@@ -76,7 +84,6 @@ export default function SignupMentee() {
         theme: "light",
       });
       navigate("/log-in");
-
     } catch (error) {
       toast.error(error.message, {
         position: "top-right",
@@ -112,10 +119,20 @@ export default function SignupMentee() {
           values={values}
           file={file}
           handleFile={handleFile}
+        />
+      );
+    case 3:
+      return (
+        <Step3
+          prevStep={prevStep}
+          nextStep={nextStep}
+          handleChange={handleChange}
+          values={values}
+          file={file}
+          handleFile={handleFile}
           handleSubmit={handleSubmit}
         />
       );
-
     default:
   }
 }

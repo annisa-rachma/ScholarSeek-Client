@@ -19,9 +19,9 @@ export default function Comments({ comment }) {
     <>
     
         <MiniProfile
-          title={comment?.User.username}
+          title={comment?.username}
           desc={comment?.createdAt}
-          image={comment?.User.profileImg}
+          image={comment?.profileImg}
         />
         <div className="flex flex-col gap-1">
           <p className="text-slate-500 text-[12px] md:text-sm ellipsis-4">

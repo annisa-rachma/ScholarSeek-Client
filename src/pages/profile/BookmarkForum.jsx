@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
 import { useParams } from "react-router-dom"
 import PageContainer from "../../components/PageContainer"
-
+import Loading from "../../components/Loading"
+import DiscussionCard from "../../components/cards/DiscussionCard"
+import NoDataSad from "../../components/NoDataSad"
 
 export default function BookmarkForum() {
     const { slug } = useParams()
@@ -11,7 +13,7 @@ export default function BookmarkForum() {
         queryFn: async () => {
             try {
                 const res = await fetch(
-                    import.meta.env.VITE_BASE_URL + '/bookmarks/thread',
+                    import.meta.env.VITE_BASE_URL + "/bookmarks/thread",
                     {
                         headers: {
                             access_token: localStorage.getItem("access_token"),
@@ -26,13 +28,21 @@ export default function BookmarkForum() {
         },
     })
     console.log(data)
-  return (
-    <>
-      <PageContainer className={`mb-12`}>
-        <div className="relative mt-[350px] flex-[1] ">
-          <div className="flex flex-col gap-4 ">forum</div>
-        </div>
-      </PageContainer>
-    </>
-  );
+    return (
+        <>
+            <PageContainer className={`mb-12`}>
+                {isLoading ? (
+                    <Loading />
+                ) : data.length > 0 ? (
+                    <div className="flex flex-col gap-4">
+                        {data.map((el, i) => (
+                            <DiscussionCard key={i} {...el} />
+                        ))}
+                    </div>
+                ) : (
+                    <NoDataSad/>
+                )}
+            </PageContainer>
+        </>
+    )
 }

@@ -103,12 +103,12 @@ export const router = createBrowserRouter([
                         path : ':slug/bookmarks/forum',
                         element : <BookmarkForum/>
                     },
+                    {
+                        path : ':slug/bookmarks/mentoring',
+                        element : <BookmarkMentoring/>
+                    }
                 ]
             },
-            {
-                path : '/bookmarks/mentoring',
-                element : <BookmarkMentoring/>
-            }
         ],
     },
 ])

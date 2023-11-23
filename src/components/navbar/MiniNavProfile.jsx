@@ -5,8 +5,8 @@ export default function MiniNavProfile({username, role, image}) {
             <p className="text-primary font-bold">{username}</p>
             <p className="text-primary font-light ">{role}</p>
         </div>
-        <div className="h-[35px] w-[35px] grid place-content-center ">
-            <img src={image} className="h-[35px] w-[35px] rounded-full" alt={`${username}'s profile picture`} />
+        <div className="h-[35px] w-[35px] grid place-content-center bg-slate-200 rounded-full overflow-hidden">
+            <img src={image} className="h-[35px] w-[35px]" alt={`${username}'s profile picture`} />
         </div>
     </div>
   )

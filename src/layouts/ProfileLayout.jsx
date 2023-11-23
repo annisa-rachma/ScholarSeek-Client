@@ -5,6 +5,7 @@ import { useSelector } from "react-redux"
 
 export default function ProfileLayout() {
     const user = useSelector((store) => store.user)
+    console.log(user)
     return (
         <div className="flex-[1] flex flex-col">
             <HeaderProfile

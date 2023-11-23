@@ -24,7 +24,6 @@ export default function ProfilePage() {
             }
         },
     })
-    console.log(userDetail)
 
     return (
         <PageContainer className="flex flex-col gap-4 ">

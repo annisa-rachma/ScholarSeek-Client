@@ -9,7 +9,7 @@ export default function ProfileNav() {
         { to: `${user.slug}`, name: "Overview" },
         { to: `${user.slug}/bookmarks/scholarships`, name: "Scholarships Bookmarks" },
         { to: `${user.slug}/bookmarks/forum`, name: "Forum Bookmarks" },
-        { to: "/bookmarks/mentoring", name: "Mentoring Session" },
+        { to: `${user.slug}/bookmarks/mentoring`, name: "Mentoring Session" },
     ]
     return(
         <>

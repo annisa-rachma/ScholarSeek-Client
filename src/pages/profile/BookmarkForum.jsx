@@ -36,7 +36,12 @@ export default function BookmarkForum() {
                 ) : data.length > 0 ? (
                     <div className="flex flex-col gap-4">
                         {data.map((el, i) => (
-                            <DiscussionCard key={i} {...el} />
+                            <DiscussionCard key={i} 
+                                content={el.Thread.content}
+                                commentCount={el.Thread.Comments.length}
+                                like={el.Thread.like}
+                                dislike={el.Thread.dislike}
+                            {...el} />
                         ))}
                     </div>
                 ) : (

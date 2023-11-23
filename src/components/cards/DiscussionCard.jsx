@@ -5,6 +5,7 @@ import BookmarkButton from "../buttons/BookmarkButton";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { VscComment } from "react-icons/vsc";
+import showToast from "../../utlis/showToast";
 
 export default function DiscussionCard({
   title,
@@ -16,8 +17,16 @@ export default function DiscussionCard({
   dislike,
   commentCount, refetch
 }) {
-  function addBookmark() {
-    alert("Discussion Bookmarked!");
+  async function addBookmark() {
+        const res = await fetch(import.meta.env.VITE_BASE_URL + `/threads/${slug}/bookmarks`, {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+              access_token: localStorage.access_token,
+            },
+          });
+        const data = await res.json()
+        showToast('success', data.message)
   }
 
   const handleLike = async() => {

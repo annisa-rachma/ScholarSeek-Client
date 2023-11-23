@@ -1,15 +1,25 @@
-import React from 'react'
 import PageContainer from "../../../components/PageContainer";
 import MiniProfile from "../../../components/MiniProfile";
 import IconWithNum from "../../../components/IconWithNum";
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { VscComment } from "react-icons/vsc";
 import BookmarkButton from "../../../components/buttons/BookmarkButton";
+import { useParams } from 'react-router';
+import showToast from "../../../utlis/showToast";
 
 
 export default function HeadThread({thread}) {
-    function addBookmark() {
-        alert("Discussion Bookmarked!");
+    const {slug} = useParams()
+    async function addBookmark() {
+        const res = await fetch(import.meta.env.VITE_BASE_URL + `/threads/${slug}/bookmarks`, {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+              access_token: localStorage.access_token,
+            },
+          });
+        const data = await res.json()
+        showToast('success', data.message)
       }
     
       function handleLike() {

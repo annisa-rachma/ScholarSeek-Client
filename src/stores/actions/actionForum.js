@@ -13,6 +13,7 @@ export function fetchForumDetail(slug) {
             if (!res.ok) {
                 throw data
             }
+            console.log(data)
             dispatch({
                 type: "fetch/getForumDetail",
                 payload: data,

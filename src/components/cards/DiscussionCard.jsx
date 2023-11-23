@@ -14,17 +14,49 @@ export default function DiscussionCard({
   createdAt,
   like,
   dislike,
-  commentCount,
+  commentCount, refetch
 }) {
   function addBookmark() {
     alert("Discussion Bookmarked!");
   }
 
-  function handleLike() {
-    alert("Liked! :D");
+  const handleLike = async() => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/threads/${slug}/like`, {
+      method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) throw data;
+      refetch()
+      // dispatch(fetchForumDetail(slug))
+      // console.log("berhasil delete")
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
-  function handleDislike() {
-    alert("Disliked! D:<");
+  const handleDislike = async() => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL}/threads/${slug}/dislike`, {
+      method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) throw data;
+      refetch()
+      // dispatch(fetchForumDetail(slug))
+      // console.log("berhasil delete")
+      return data;
+    } catch (error) {
+      throw error;
+    }
   }
   // console.log(like, dislikes)
   return (

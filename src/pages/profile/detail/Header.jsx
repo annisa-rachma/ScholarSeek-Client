@@ -8,7 +8,7 @@ export default function HeaderProfile({ username, profileImg, status }) {
             <div className="bg-primary min-h-[200px] w-full flex justify-center">
                 <div className="relative w-full max-w-[1300px] lg:mx-6">
                     <section className="absolute left-[50%] lg:left-0 lg:translate-x-[0px] translate-x-[-50%] bottom-0 translate-y-[50%] lg:translate-y-[80%] lg:flex lg:items-center lg:gap-6">
-                        <div className="w-[30vw] max-w-[150px] aspect-square rounded-full bg-slate-200 border-white border-4">
+                        <div className="w-[30vw] max-w-[150px] aspect-square rounded-full bg-slate-200 border-white overflow-hidden border-4">
                             <img
                                 className="w-full h-full object-cover"
                                 src={profileImg}

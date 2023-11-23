@@ -10,7 +10,10 @@ export default function ProfileNav() {
         { to: `${user.slug}/bookmarks/scholarships`, name: "Scholarships Bookmarks" },
         { to: `${user.slug}/bookmarks/forum`, name: "Forum Bookmarks" },
         { to: `${user.slug}/bookmarks/mentoring`, name: "Mentoring Session" },
-    ]
+    ] 
+
+
+
     return(
         <>
         <div className="flex flex-wrap justify-center md:justify-evenly gap-4 text-center">

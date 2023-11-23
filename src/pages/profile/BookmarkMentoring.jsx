@@ -79,7 +79,7 @@ export default function BookmarkMentoring() {
                         ))}
                     </div>
                 ) : (
-                    <NoDataSad/>
+                    <NoDataSad />
                 )}
                 <AddMentoringPopup
                     onClose={handleOnClose}

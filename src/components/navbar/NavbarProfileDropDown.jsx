@@ -12,7 +12,7 @@ export default function NavbarProfileDropDown({ className }) {
 
     const links = [
         { icon: <AiOutlineUser />, name: "Profile", to: `/profile/${user.slug}` },
-        { icon: <HiOutlineBookmark />, name: "BookMarks", to: "/bookmarks/scholarships" },
+        { icon: <HiOutlineBookmark />, name: "BookMarks", to: `/profile/${user.slug}/bookmarks/scholarships` },
     ]
 
     const handleLogout = () => {

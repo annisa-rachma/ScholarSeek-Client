@@ -3,6 +3,7 @@ import Loading from "../../components/Loading"
 import PageContainer from "../../components/PageContainer"
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
+import NoDataSad from "../../components/NoDataSad"
 
 export default function BookmarkScholarship() {
     const { slug } = useParams()
@@ -32,13 +33,14 @@ export default function BookmarkScholarship() {
             <PageContainer>
                 {isLoading ? (
                     <Loading />
-                ) : (
+                ) : data.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-16">
-                        {data.length > 0 &&
-                            data.map((scholarship, i) => (
-                                <ScholarshipCard key={i} {...scholarship} />
-                            ))}
+                        {data.map((scholarship, i) => (
+                            <ScholarshipCard key={i} {...scholarship} />
+                        ))}
                     </div>
+                ) : (
+                    <NoDataSad/>
                 )}
             </PageContainer>
         </>

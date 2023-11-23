@@ -9,6 +9,7 @@ import { RiLogoutBoxRLine } from "react-icons/ri"
 import { createClient } from "agora-rtc-react"
 import { useState } from "react"
 import StreamActionButton from "../buttons/StreamActionButton"
+import { useNavigate } from "react-router"
 const config = {
     mode: "rtc",
     codec: "vp8",
@@ -16,6 +17,7 @@ const config = {
 const useClient = createClient(config)
 
 export default function Controls({ tracks, setStart, setInCall }) {
+    const navigate = useNavigate()
     const client = useClient()
     const [trackState, setTrackState] = useState({ video: true, audio: true })
     // the type is : "audio" | "video"
@@ -58,7 +60,10 @@ export default function Controls({ tracks, setStart, setInCall }) {
         {
             inactiveIcon: <RiLogoutBoxRLine />,
             name: "leave",
-            onClick: () => leaveChannel(),
+            onClick: async () => {
+                await leaveChannel()
+                navigate('/')
+            },
         },
     ]
 

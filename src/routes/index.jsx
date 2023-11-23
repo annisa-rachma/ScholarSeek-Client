@@ -19,6 +19,7 @@ import BookmarkMentoring from "../pages/profile/BookmarkMentoring"
 import RegisterPage from "../pages/register/Register"
 import SignupMentee from "../pages/register/registerMentee/SignupMentee"
 import SignupAwardee from "../pages/register/registerAwardee/SignupAwardee"
+import ProfileLayout from "../layouts/ProfileLayout"
 
 export const router = createBrowserRouter([
     {
@@ -87,21 +88,27 @@ export const router = createBrowserRouter([
                 element: <ForumDetailPage/>
             },
             {
-                path: '/profile/:slug',
-                element: <ProfilePage/>
+                path: '/profile',
+                element: <ProfileLayout/>,
+                children: [
+                    {
+                        path: ':slug',
+                        element: <ProfilePage/>
+                    },
+                    {
+                        path : ':slug/bookmarks/scholarships',
+                        element : <BookmarkScholarship/>
+                    },
+                    {
+                        path : ':slug/bookmarks/forum',
+                        element : <BookmarkForum/>
+                    },
+                    {
+                        path : ':slug/bookmarks/mentoring',
+                        element : <BookmarkMentoring/>
+                    }
+                ]
             },
-            {
-                path : '/profile/:slug/bookmarks/scholarships',
-                element : <BookmarkScholarship/>
-            },
-            {
-                path : '/profile/:slug/bookmarks/forum',
-                element : <BookmarkForum/>
-            },
-            {
-                path : '/bookmarks/mentoring',
-                element : <BookmarkMentoring/>
-            }
         ],
     },
 ])

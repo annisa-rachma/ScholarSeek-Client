@@ -6,17 +6,20 @@ export default function ProfileNav() {
         return state.user
     })
     const links = [
-        { to: `/profile/${user.slug}`, name: "Overview" },
-        { to: `/profile/${user.slug}/bookmarks/scholarships`, name: "Scholarships Bookmarks" },
-        { to: `/profile/${user.slug}/bookmarks/forum`, name: "Forum Bookmarks" },
-        { to: "/bookmarks/mentoring", name: "Mentoring Session" },
+        { to: `${user.slug}`, name: "Overview" },
+        { to: `${user.slug}/bookmarks/scholarships`, name: "Scholarships Bookmarks" },
+        { to: `${user.slug}/bookmarks/forum`, name: "Forum Bookmarks" },
+        { to: `${user.slug}/bookmarks/mentoring`, name: "Mentoring Session" },
     ]
     return(
         <>
-        <div className="hidden md:flex items-center justify-between  text-base font-semibold border-b-[1px] border-slate-300">
+        <div className="flex flex-wrap justify-center md:justify-evenly gap-4 text-center">
             {links.map((link) => (
-              <NavLink className="navbar" key={link.to} end to={link.to}>
+              <NavLink className="text-slate-400 flex items-center justify-center profile-nav p-1 flex-[1]" key={link.to} end to={link.to}>
+                <p>
                 {link.name}
+
+                </p>
               </NavLink>
             ))}
           </div>

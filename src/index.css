@@ -33,6 +33,23 @@
     border-bottom: 2px solid #3056e3;
 }
 
+.profile-nav.active {
+    color: #3056e3;
+    font-weight: 800;
+    position: relative;
+}
+
+.profile-nav.active:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(2px);
+    bottom: 0;
+    height: 1px;
+    width: 90%; /* or 100px */
+    border-bottom: 2px solid #3056e3;
+}
+
 @keyframes float {
     0% {
         transform: translatey(0px);

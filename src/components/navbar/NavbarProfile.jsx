@@ -10,7 +10,7 @@ export default function NavbarProfile({ isLoggedIn, forMobile }) {
         return (
             <div className="relative group ">
                 <MiniNavProfile
-                    username={user.name}
+                    username={user.username}
                     image={user.profileImg}
                     role={user.role}
                 />

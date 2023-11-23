@@ -37,7 +37,7 @@ export default function MentoringDetailPage() {
     if (loading) {
         return <Loading className="flex-[1]" /> // You can replace this with a loading spinner or any other loading indicator
     }
-    // console.log(mentoringDetail)
+    console.log(mentoringDetail)
     return (
         <PageContainer>
             <div className="flex justify-between items-center">

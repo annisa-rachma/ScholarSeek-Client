@@ -24,7 +24,7 @@ export default function BodyInfo({
   quota
 }) {
     const user = useSelector(store => store.user)
-    console.log(user)
+    // console.log(user)
   const { slug } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate()

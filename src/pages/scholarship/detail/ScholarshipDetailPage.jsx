@@ -68,10 +68,12 @@ export default function ScholarshipDetailPage() {
           registrationDeadline={scholarship?.registrationDeadline}
         />
         <div className="mt-5 md:mt-10">
-          <BookmarkButton
-            className={"text-4xl md:text-5xl"}
-            onClick={addBookMark}
-          />
+          {localStorage.access_token && 
+            <BookmarkButton
+              className={"text-4xl md:text-5xl"}
+              onClick={addBookMark}
+            />
+          }
         </div>
       </div>
       <InfoTable className="mt-6" obj={scholarship?.Detail} />

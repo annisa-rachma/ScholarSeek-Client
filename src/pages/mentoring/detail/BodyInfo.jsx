@@ -13,7 +13,7 @@ import showToast from "../../../utlis/showToast";
 export default function BodyInfo({
   image,
   desc,
-//   user,
+  userr ,
   topics,
   className,
   totalAttendees,
@@ -96,9 +96,9 @@ export default function BodyInfo({
         <div className="flex flex-col gap-2">
           <p className="font-extrabold text-primary">Pembicara</p>
           <MiniProfile
-            title={user.username}
-            image={user.profilePicture}
-            desc={user.status}
+            title={userr.username}
+            image={userr.profilePicture}
+            desc={userr.status}
           />
         </div>
         <div className="flex flex-col gap-2">

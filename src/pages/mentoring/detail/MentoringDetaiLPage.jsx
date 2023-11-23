@@ -56,7 +56,7 @@ export default function MentoringDetailPage() {
                 desc={
                     "Excepteur incididunt eiusmod et reprehenderit velit dolore. Et enim enim excepteur velit quis cupidatat deserunt fugiat anim fugiat incididunt consequat. Lorem Lorem sunt labore ex duis quis. Eu commodo in labore nisi officia sit et.Nulla proident nostrud laborum sint cillum qui magna sunt. Irure proident adipisicing ut nulla dolore. Proident et amet reprehenderit elit est ea laboris sit ut voluptate amet occaecat. Sint dolore enim id esse culpa labore nisi magna pariatur adipisicing voluptate exercitation in."
                 }
-                user={{
+                userr={{
                     profilePicture: mentoringDetail?.profilePicture,
                     username: mentoringDetail?.username,
                     status: mentoringDetail?.status,
